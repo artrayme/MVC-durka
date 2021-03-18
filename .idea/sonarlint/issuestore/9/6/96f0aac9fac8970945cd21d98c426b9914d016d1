@@ -1,0 +1,244 @@
+
+s	java:S109"TAssign this magic number 118 to a well-named constant, and use the constant instead.(›“â§ÿÿÿÿÿ8ıàìÆ/
+a
+java:S1106"AMove this left curly brace to the beginning of next line of code.(àĞö¶ıÿÿÿÿ8€áìÆ/
+e
+java:S1120"EMake this line start after 12 spaces to indent the code consistently.(’Ñ¯èùÿÿÿÿ8€áìÆ/
+n	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(ÆÖĞì8ıàìÆ/
+n	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(©ºò²8€áìÆ/
+n	java:S109"TAssign this magic number 118 to a well-named constant, and use the constant instead.(“’Š8ıàìÆ/
+O	java:S125"<This block of commented-out lines of code should be removed.(ÙıÆÙ
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8ıàìÆ/
+I
+java:S2208".Explicitly import the specific classes needed.(ï´µ©8€áìÆ/
+\
+java:S1106"AMove this left curly brace to the beginning of next line of code.(›¾¨Š8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8ıàìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 246 to a well-named constant, and use the constant instead.(›Ñ¾Îıÿÿÿÿ8€áìÆ/
+n	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(ÆÖĞì8ıàìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8ıàìÆ/
+m	java:S109"SAssign this magic number 74 to a well-named constant, and use the constant instead.(°Ÿâ½8ıàìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8şàìÆ/
+s	java:S109"TAssign this magic number 246 to a well-named constant, and use the constant instead.(›“â§ÿÿÿÿÿ8ıàìÆ/
+e
+java:S1120"EMake this line start after 10 spaces to indent the code consistently.(‹î­üÿÿÿÿ8€áìÆ/
+T	java:S125"<This block of commented-out lines of code should be removed.(£ ç³ùÿÿÿÿ
+A
+java:S2211"!Specify a type for: 'actionEvent'(ÎíÌ·ıÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8şàìÆ/
+<
+java:S2211"!Specify a type for: 'actionEvent'(¶äñ8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8€áìÆ/
+E
+java:S1166"%Either log or rethrow this exception.(±Ÿ—±ÿÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8€áìÆ/
+i
+java:S1699"NRemove this call from a constructor to the overridable "setBackground" method.(Ÿ¨É8€áìÆ/
+<
+java:S2211"!Specify a type for: 'actionEvent'(ç³Õ8€áìÆ/
+>
+java:S1148"#Use a logger to log this exception.(Ç’Çê8€áìÆ/
+_
+java:S1120"DMake this line start after 4 spaces to indent the code consistently.(ÏóÒ‹8€áìÆ/
+T	java:S125"<This block of commented-out lines of code should be removed.(Ù‰‘›ıÿÿÿÿ
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8ıàìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(õ¼˜ôıÿÿÿÿ8€áìÆ/
+_
+java:S1120"DMake this line start after 4 spaces to indent the code consistently.(±’‘á8€áìÆ/
+s	java:S109"TAssign this magic number 246 to a well-named constant, and use the constant instead.(ÂÇğÇÿÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(ó‡©—ÿÿÿÿÿ8ıàìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(¿ ¹æüÿÿÿÿ8€áìÆ/
+r	java:S109"SAssign this magic number 74 to a well-named constant, and use the constant instead.(›“â§ÿÿÿÿÿ8ıàìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8ıàìÆ/
+n	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(©ºò²8€áìÆ/
+_
+java:S1120"DMake this line start after 2 spaces to indent the code consistently.(Ù’éı8€áìÆ/
+k	java:S109"RAssign this magic number 2 to a well-named constant, and use the constant instead.(¸ë´d8ıàìÆ/
+A
+java:S2325"&Make "createDialog" a "static" method.(ø‹É8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8ıàìÆ/
+\
+java:S1106"AMove this left curly brace to the beginning of next line of code.(ø‹É8€áìÆ/
+m	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(ğ¿´n8ıàìÆ/
+a
+java:S1106"AMove this left curly brace to the beginning of next line of code.(¾¡’ııÿÿÿÿ8€áìÆ/
+a
+java:S1106"AMove this left curly brace to the beginning of next line of code.(ç¶šÚøÿÿÿÿ8€áìÆ/
+n	java:S109"TAssign this magic number 246 to a well-named constant, and use the constant instead.(°Ÿâ½8ıàìÆ/
+n	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(ÆÖĞì8ıàìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(ÿâ™çûÿÿÿÿ8ıàìÆ/
+s	java:S109"TAssign this magic number 246 to a well-named constant, and use the constant instead.(›“â§ÿÿÿÿÿ8ıàìÆ/
+\
+java:S1106"AMove this left curly brace to the beginning of next line of code.(ç¥¨8€áìÆ/
+n	java:S109"TAssign this magic number 246 to a well-named constant, and use the constant instead.(ìÓ×–8€áìÆ/
+a
+java:S1106"AMove this left curly brace to the beginning of next line of code.(‡»¶°úÿÿÿÿ8€áìÆ/
+<
+java:S2211"!Specify a type for: 'actionEvent'(çıÅ£8€áìÆ/
+s	java:S109"TAssign this magic number 246 to a well-named constant, and use the constant instead.(¸ë¬øÿÿÿÿ8€áìÆ/
+a
+java:S1106"AMove this left curly brace to the beginning of next line of code.(¾Ëıÿÿÿÿ8€áìÆ/
+_
+java:S1120"DMake this line start after 4 spaces to indent the code consistently.(Ÿ¨É8€áìÆ/
+\
+java:S1106"AMove this left curly brace to the beginning of next line of code.(å¥‡8€áìÆ/
+T
+java:S2221"4Catch a list of specific exception subtypes instead.(±Ÿ—±ÿÿÿÿÿ8€áìÆ/
+r	java:S109"SAssign this magic number 74 to a well-named constant, and use the constant instead.(›“â§ÿÿÿÿÿ8ıàìÆ/
+a
+java:S1106"AMove this left curly brace to the beginning of next line of code.(®Ó§µùÿÿÿÿ8€áìÆ/
+O	java:S125"<This block of commented-out lines of code should be removed.(Óçöí
+n	java:S109"TAssign this magic number 118 to a well-named constant, and use the constant instead.(°Ÿâ½8ıàìÆ/
+d
+java:S1120"DMake this line start after 4 spaces to indent the code consistently.(‹ùÿ¬ÿÿÿÿÿ8€áìÆ/
+a
+java:S1106"AMove this left curly brace to the beginning of next line of code.(éÎ×™ûÿÿÿÿ8€áìÆ/
+O	java:S125"<This block of commented-out lines of code should be removed.(Œ´ñ÷
+T	java:S125"<This block of commented-out lines of code should be removed.( Ëáçşÿÿÿÿ
+[
+java:S1106"AMove this left curly brace to the beginning of next line of code.(¦±’d8€áìÆ/
+a
+java:S1106"AMove this left curly brace to the beginning of next line of code.(¯µ”Ïıÿÿÿÿ8€áìÆ/
+a
+java:S1106"AMove this left curly brace to the beginning of next line of code.(¡»¢üùÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8€áìÆ/
+a
+java:S1106"AMove this left curly brace to the beginning of next line of code.(”¢ªĞûÿÿÿÿ8€áìÆ/
+n	java:S109"TAssign this magic number 0.4 to a well-named constant, and use the constant instead.(Ê‡¿ì8ıàìÆ/
+n	java:S109"TAssign this magic number 118 to a well-named constant, and use the constant instead.(Ä·ÿò8€áìÆ/
+d
+java:S1120"DMake this line start after 4 spaces to indent the code consistently.(ƒâ»şÿÿÿÿ8€áìÆ/
+T	java:S125"<This block of commented-out lines of code should be removed.(—İÜãøÿÿÿÿ
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8€áìÆ/
+;
+java:S1451"&Add or update the header of this file.8€áìÆ/
+_
+java:S1120"DMake this line start after 6 spaces to indent the code consistently.(Ç’Çê8€áìÆ/
+d
+java:S1120"DMake this line start after 4 spaces to indent the code consistently.(ÖÁîŞùÿÿÿÿ8€áìÆ/
+R
+java:S1108"2Move this "catch" keyword to a new dedicated line.(±Ÿ—±ÿÿÿÿÿ8€áìÆ/
+O	java:S125"<This block of commented-out lines of code should be removed.(ªÒ»ï
+e
+java:S1120"EMake this line start after 10 spaces to indent the code consistently.(áíÓ€ÿÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(¿ ¹æüÿÿÿÿ8€áìÆ/
+e
+java:S1120"EMake this line start after 10 spaces to indent the code consistently.(‹î­üÿÿÿÿ8€áìÆ/
+r	java:S109"SAssign this magic number 74 to a well-named constant, and use the constant instead.(¸ë¬øÿÿÿÿ8€áìÆ/
+d
+java:S1120"DMake this line start after 4 spaces to indent the code consistently.(¿ ¹æüÿÿÿÿ8€áìÆ/
+r	java:S109"SAssign this magic number 74 to a well-named constant, and use the constant instead.(›Ñ¾Îıÿÿÿÿ8€áìÆ/
+d
+java:S1120"DMake this line start after 4 spaces to indent the code consistently.(õ¼˜ôıÿÿÿÿ8€áìÆ/
+m	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(ğ¿´n8ıàìÆ/
+s	java:S109"TAssign this magic number 118 to a well-named constant, and use the constant instead.(›“â§ÿÿÿÿÿ8ıàìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8şàìÆ/
+e
+java:S1120"EMake this line start after 10 spaces to indent the code consistently.(‹î­üÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8ıàìÆ/
+n	java:S109"TAssign this magic number 246 to a well-named constant, and use the constant instead.(Ä·ÿò8€áìÆ/
+m	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(ğ¿´n8ıàìÆ/
+_
+java:S1120"DMake this line start after 4 spaces to indent the code consistently.(¢À®ù8€áìÆ/
+L
+java:S1108"1Move this "else" keyword to a new dedicated line.(å¥‡8€áìÆ/
+d
+java:S1120"DMake this line start after 6 spaces to indent the code consistently.(¨±¸‚úÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 118 to a well-named constant, and use the constant instead.(¸ë¬øÿÿÿÿ8şàìÆ/
+r	java:S109"SAssign this magic number 74 to a well-named constant, and use the constant instead.(ô¾µŠúÿÿÿÿ8€áìÆ/
+k	java:S109"RAssign this magic number 2 to a well-named constant, and use the constant instead.(¸ë´d8ıàìÆ/
+a
+java:S1106"AMove this left curly brace to the beginning of next line of code.(óÑ“Îÿÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(¿ ¹æüÿÿÿÿ8€áìÆ/
+\
+java:S1106"AMove this left curly brace to the beginning of next line of code.(«½ŞÈ8€áìÆ/
+d
+java:S1120"DMake this line start after 4 spaces to indent the code consistently.(Ò‰Ş»ûÿÿÿÿ8€áìÆ/
+d
+java:S1120"DMake this line start after 4 spaces to indent the code consistently.(æ‘“åÿÿÿÿÿ8€áìÆ/
+e
+java:S1120"EMake this line start after 10 spaces to indent the code consistently.(‹î­üÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 118 to a well-named constant, and use the constant instead.(ÂÇğÇÿÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8ıàìÆ/
+e
+java:S1120"EMake this line start after 10 spaces to indent the code consistently.(‹î­üÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(ÖÁîŞùÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(æ‘“åÿÿÿÿÿ8€áìÆ/
+e
+java:S1120"EMake this line start after 10 spaces to indent the code consistently.(‹î­üÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(ÿâ™çûÿÿÿÿ8ıàìÆ/
+A
+java:S2211"!Specify a type for: 'actionEvent'(ôŒ‰Íıÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(ó‡©—ÿÿÿÿÿ8ıàìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(ó‡©—ÿÿÿÿÿ8ıàìÆ/
+n	java:S109"TAssign this magic number 118 to a well-named constant, and use the constant instead.(ìÓ×–8€áìÆ/
+s	java:S109"TAssign this magic number 118 to a well-named constant, and use the constant instead.(ô¾µŠúÿÿÿÿ8€áìÆ/
+A
+java:S2211"!Specify a type for: 'actionEvent'(Æÿó£úÿÿÿÿ8€áìÆ/
+e
+java:S1120"EMake this line start after 10 spaces to indent the code consistently.(‹î­üÿÿÿÿ8€áìÆ/
+T	java:S125"<This block of commented-out lines of code should be removed.(òäğ…ıÿÿÿÿ
+d
+java:S1120"DMake this line start after 4 spaces to indent the code consistently.(‹úçÍıÿÿÿÿ8€áìÆ/
+`
+java:S1120"EMake this line start after 12 spaces to indent the code consistently.(Î„û»8€áìÆ/
+\
+java:S1106"AMove this left curly brace to the beginning of next line of code.(‘ş‰ø8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(æ‘“åÿÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8€áìÆ/
+n	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(©ºò²8€áìÆ/
+r	java:S109"SAssign this magic number 74 to a well-named constant, and use the constant instead.(ÂÇğÇÿÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(ÖÁîŞùÿÿÿÿ8€áìÆ/
+m	java:S109"SAssign this magic number 74 to a well-named constant, and use the constant instead.(Ä·ÿò8€áìÆ/
+d
+java:S1120"DMake this line start after 4 spaces to indent the code consistently.(ó‡©—ÿÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8€áìÆ/
+n	java:S109"TAssign this magic number 0.4 to a well-named constant, and use the constant instead.(·®º„8ıàìÆ/
+a
+java:S1106"AMove this left curly brace to the beginning of next line of code.(±Ÿ—±ÿÿÿÿÿ8€áìÆ/
+T	java:S125"<This block of commented-out lines of code should be removed.(³¤Úıÿÿÿÿ
+d
+java:S5612"DReduce this lambda expression number of lines from 12 to at most 10.(Æÿó£úÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8€áìÆ/
+A
+java:S2211"!Specify a type for: 'actionEvent'(Ìİìıÿÿÿÿ8€áìÆ/
+e	java:S103"KSplit this 140 characters long line (which is greater than 120 authorized).(Š– –8€áìÆ/
+T	java:S125"<This block of commented-out lines of code should be removed.(Øü“Ìûÿÿÿÿ
+_
+java:S1120"DMake this line start after 4 spaces to indent the code consistently.(©ºò²8€áìÆ/
+m	java:S109"SAssign this magic number 74 to a well-named constant, and use the constant instead.(“’Š8ıàìÆ/
+j	java:S103"KSplit this 121 characters long line (which is greater than 120 authorized).(áíÓ€ÿÿÿÿÿ8€áìÆ/
+T	java:S125"<This block of commented-out lines of code should be removed.(¶Èè˜úÿÿÿÿ
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(õ¼˜ôıÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(æ‘“åÿÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(ÿâ™çûÿÿÿÿ8ıàìÆ/
+n	java:S109"TAssign this magic number 246 to a well-named constant, and use the constant instead.(“’Š8ıàìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8€áìÆ/
+<
+java:S2211"!Specify a type for: 'actionEvent'(¸”©Ù8€áìÆ/
+s	java:S109"TAssign this magic number 246 to a well-named constant, and use the constant instead.(ô¾µŠúÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(ÖÁîŞùÿÿÿÿ8€áìÆ/
+s	java:S109"TAssign this magic number 118 to a well-named constant, and use the constant instead.(›Ñ¾Îıÿÿÿÿ8€áìÆ/
+O	java:S125"<This block of commented-out lines of code should be removed.(°şí
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8ıàìÆ/
+_
+java:S1120"DMake this line start after 4 spaces to indent the code consistently.(¨ıİ—8€áìÆ/
+m	java:S109"SAssign this magic number 32 to a well-named constant, and use the constant instead.(èêÄ8ıàìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ8€áìÆ/
+N
+java:S2208".Explicitly import the specific classes needed.(Ìí¿Üüÿÿÿÿ8€áìÆ/
+<
+java:S2211"!Specify a type for: 'actionEvent'(×‘Áş8€áìÆ/
+a
+java:S1106"AMove this left curly brace to the beginning of next line of code.(æÀ¾éûÿÿÿÿ8€áìÆ/
+e
+java:S1120"EMake this line start after 10 spaces to indent the code consistently.(‹î­üÿÿÿÿ8€áìÆ/
+m	java:S109"SAssign this magic number 32 to a well-named constant, and use the constant instead.(èêÄ8ıàìÆ/
+s	java:S109"TAssign this magic number 220 to a well-named constant, and use the constant instead.(õ¼˜ôıÿÿÿÿ8€áìÆ/
+m	java:S109"SAssign this magic number 74 to a well-named constant, and use the constant instead.(ìÓ×–8€áìÆ/
