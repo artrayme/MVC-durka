@@ -41,8 +41,8 @@ public class RemovePatientPanel extends JPanel {
         confirmButton.addActionListener(e -> {
             AbstractPatientDatabaseModel foundPatients = controller.findPatients(createPatient());
             tablePane.setModel(foundPatients);
-            controller.removePatients(foundPatients);
-            JOptionPane.showMessageDialog(new JFrame(), foundPatients.getDatabaseSize() + " patients was removed");
+            int removedCount = controller.removePatients(foundPatients);
+            JOptionPane.showMessageDialog(new JFrame(), removedCount + " patients was removed");
 
         });
     }

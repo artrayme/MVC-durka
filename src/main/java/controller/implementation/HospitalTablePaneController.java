@@ -67,7 +67,6 @@ public class HospitalTablePaneController extends AbstractHospitalTableController
 
     @Override
     public AbstractPatientDataStruct[] getDatabase() {
-        System.out.println("HospitalTablePaneController:getDatabase pageNumber = " + pageNumber + " rowsAtPage = " + rowsAtPage);
         return model.getDatabasePart(pageNumber * rowsAtPage, rowsAtPage);
     }
 
@@ -83,7 +82,7 @@ public class HospitalTablePaneController extends AbstractHospitalTableController
     }
 
     @Override
-    public boolean saveDatabaseFromFile(File file) {
+    public boolean saveDatabaseToFile(File file) {
         if (isDatabaseConnect) {
             try {
                 XmlSaver.save(file, model);

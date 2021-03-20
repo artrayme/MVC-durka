@@ -30,7 +30,6 @@ public class Database extends AbstractPatientDatabaseModel implements Iterable<A
 
     @Override
     public AbstractPatientDatabaseModel searchPatientName(String name) {
-        System.out.println("searchPatientName - " + name);
         Database result = new Database();
         database.forEach(e -> {
             if (e.getPatientName().equals(name))
@@ -87,7 +86,6 @@ public class Database extends AbstractPatientDatabaseModel implements Iterable<A
     public AbstractPatientDatabaseModel searchConclusion(String conclusion) {
         Database result = new Database();
         database.forEach(e -> {
-            System.out.println(e.getConclusion() + (e.getConclusion().equals(conclusion) ? " == " : " != " + conclusion));
             if (e.getConclusion().equals(conclusion)) {
                 result.add(e);
             }

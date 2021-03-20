@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.function.BiFunction;
 import java.util.function.Consumer;
-import java.util.function.Predicate;
 
 public abstract class AbstractPatientDatabaseModel implements Iterable<AbstractPatientDataStruct> {
     protected final List<DatabaseChangeListener> listeners = new ArrayList<>();
@@ -51,6 +49,7 @@ public abstract class AbstractPatientDatabaseModel implements Iterable<AbstractP
         return database.iterator();
     }
 
+    @Override
     public void forEach(Consumer<? super AbstractPatientDataStruct> action) {
         database.forEach(action);
     }

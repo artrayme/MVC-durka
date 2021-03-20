@@ -1,6 +1,11 @@
 package saver;
 
 public class XmlConstants {
+
+    private XmlConstants(){
+        throw new IllegalStateException("Utility class");
+    }
+
     public static final String TABLE = "table";
     public static final String TABLE_NAME = "name";
     public static final String TABLE_SIZE = "size";

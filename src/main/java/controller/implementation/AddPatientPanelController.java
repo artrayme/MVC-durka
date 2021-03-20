@@ -5,14 +5,13 @@ import model.abstractmodel.AbstractPatientDatabaseModel;
 
 public class AddPatientPanelController {
 
-    AbstractPatientDatabaseModel model;
+    protected AbstractPatientDatabaseModel model;
 
     public AddPatientPanelController(AbstractPatientDatabaseModel model){
         this.model = model;
     }
 
     public boolean addNewPatient(AbstractPatientDataStruct patient) {
-        System.out.println("AddPatientPanelController: patient = " + patient);
         if (patient != null) {
             model.add(patient);
             return true;

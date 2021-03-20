@@ -13,17 +13,17 @@ public abstract class AbstractHospitalTableController {
     protected int pageNumber;
     protected int pagesCount;
     protected int rowsAtPage = 10;
-    protected boolean isDatabaseConnect = false;
+    protected boolean isDatabaseConnect;
 
-    abstract public boolean onStartPageButton();
+    public abstract boolean onStartPageButton();
 
-    abstract public boolean onEndPageButton();
+    public abstract boolean onEndPageButton();
 
-    abstract public boolean onBackPageButton();
+    public abstract boolean onBackPageButton();
 
-    abstract public boolean onForwardPageButton();
+    public abstract boolean onForwardPageButton();
 
-    abstract public boolean onRowsCountAtThePageTextField(int rowsCount);
+    public abstract boolean onRowsCountAtThePageTextField(int rowsCount);
 
     public AbstractPatientDatabaseModel getModel() {
         return model;
@@ -50,10 +50,12 @@ public abstract class AbstractHospitalTableController {
         updateDatabaseInfo();
     }
 
-    public void updateDatabaseInfo(){
-        if (model!=null){
-            if (model.getDatabaseSize() == 0) pagesCount = 0;
-            else pagesCount = (int) Math.ceil(((double) model.getDatabaseSize()) / rowsAtPage) - 1;
+    public void updateDatabaseInfo() {
+        if (model != null) {
+            if (model.getDatabaseSize() == 0)
+                pagesCount = 0;
+            else
+                pagesCount = (int) Math.ceil(((double) model.getDatabaseSize()) / rowsAtPage) - 1;
             pageNumber = 0;
         }
         isDatabaseConnect = model != null;
@@ -63,7 +65,7 @@ public abstract class AbstractHospitalTableController {
 
     public abstract boolean loadDatabaseFromFile(File file);
 
-    public abstract boolean saveDatabaseFromFile(File file);
+    public abstract boolean saveDatabaseToFile(File file);
 
     public abstract void addModelActionListener(DatabaseChangeListener listener);
 }

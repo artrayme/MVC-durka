@@ -1,3 +1,4 @@
+package gui;
 
 import gui.MainWindow;
 
@@ -20,12 +21,12 @@ public class Main {
         MainWindow mainWindow = new MainWindow();
         mainWindow.setTitle("Durka - 1.2 beta");
         mainWindow.setBounds((screenSize.width - width) / 2, (screenSize.height - height) / 2, width, height);
-        mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         mainWindow.setVisible(true);
     }
 
     public static void setUIFont(FontUIResource f) {
-        Enumeration keys = UIManager.getDefaults().keys();
+        Enumeration<Object> keys = UIManager.getDefaults().keys();
         while (keys.hasMoreElements()) {
             Object key = keys.nextElement();
             Object value = UIManager.get(key);

@@ -1,7 +1,14 @@
 package gui;
 
+import controller.implementation.AddPatientPanelController;
 import controller.implementation.HospitalTablePaneController;
+import controller.implementation.RemovePatientPanelController;
+import controller.implementation.SearchPatientPanelController;
+import model.abstractmodel.AbstractPatientDatabaseModel;
 import view.HospitalTablePane;
+import view.dialogs.addpatient.AddPatientDialog;
+import view.dialogs.removepatient.RemovePatientDialog;
+import view.dialogs.searchpatients.SearchPatientDialog;
 
 import javax.swing.*;
 import java.awt.*;
@@ -52,7 +59,7 @@ public class MenuBar extends JMenuBar {
             int result = fileChooser.showOpenDialog(this);
             if (result == JFileChooser.APPROVE_OPTION) {
                 File selectedFile = fileChooser.getSelectedFile();
-                ((HospitalTablePane)(MainWindow.tabBar.getSelectedComponent())).saveDatabaseToFile(selectedFile);
+                ((HospitalTablePane) (MainWindow.tabBar.getSelectedComponent())).saveDatabaseToFile(selectedFile);
             }
         });
         return save;
@@ -67,7 +74,7 @@ public class MenuBar extends JMenuBar {
             int result = fileChooser.showOpenDialog(this);
             if (result == JFileChooser.APPROVE_OPTION) {
                 File selectedFile = fileChooser.getSelectedFile();
-                ((HospitalTablePane)(MainWindow.tabBar.getSelectedComponent())).loadDatabaseFromFile(selectedFile);
+                ((HospitalTablePane) (MainWindow.tabBar.getSelectedComponent())).loadDatabaseFromFile(selectedFile);
             }
         });
         return load;
@@ -92,98 +99,81 @@ public class MenuBar extends JMenuBar {
     }
 
     private void initEditMenu() {
-        JMenuItem pencil = initPencilInstrumentItem();
-        JMenuItem line = initLineInstrumentItem();
-        JMenuItem rectangle = initRectangleInstrumentItem();
-        JMenuItem ellipse = initEllipseInstrumentItem();
-        JMenuItem text = initTextInstrumentItem();
-        JMenuItem selectionRectangle = initSelectionRectangleInstrumentItem();
-        JMenuItem lasso = initLassoInstrumentItem();
-        JMenuItem zoom = initZoomInstrumentItem();
-        editMenu.add(pencil);
-        editMenu.add(line);
-        editMenu.add(rectangle);
-        editMenu.add(ellipse);
-        editMenu.add(text);
-        editMenu.add(selectionRectangle);
-        editMenu.add(lasso);
-        editMenu.add(zoom);
+        JMenuItem newPatient = initNewPatientDialogItem();
+        JMenuItem removePatient = initRemovePatientDialogItem();
+        JMenuItem findPatient = initFindPatientItem();
+        editMenu.add(newPatient);
+        editMenu.add(removePatient);
+        editMenu.add(findPatient);
         this.add(editMenu);
     }
 
-    private JMenuItem initPencilInstrumentItem() {
-        JMenuItem pencil = new JMenuItem("<html><font color='#d6d6d6'>Pencil</font></html>");
+    private JMenuItem initNewPatientDialogItem() {
+        JMenuItem pencil = new JMenuItem("<html><font color='#d6d6d6'>New patient</font></html>");
         pencil.setBackground(Color.DARK_GRAY);
         pencil.addActionListener(actionEvent -> {
-//            ((HospitalTableMainWindow)(MainWindow.tabBar.getSelectedComponent()));
+            var temp = (HospitalTablePane) (MainWindow.tabBar.getSelectedComponent());
+            if (temp.isDatabaseConnected()) {
+                createAddDialog(temp.getModel());
+            } else {
+                JOptionPane.showMessageDialog(new JFrame(), "Database not connected");
+            }
         });
         return pencil;
     }
 
 
-    private JMenuItem initLineInstrumentItem() {
-        JMenuItem line = new JMenuItem("<html><font color='#d6d6d6'>Line</font></html>");
+    private JMenuItem initRemovePatientDialogItem() {
+        JMenuItem line = new JMenuItem("<html><font color='#d6d6d6'>Remove patient</font></html>");
         line.setBackground(Color.DARK_GRAY);
         line.addActionListener(actionEvent -> {
-//            ((DrawArea) (MainWindow.tabBar.getSelectedComponent())).line();
+            var temp = (HospitalTablePane) (MainWindow.tabBar.getSelectedComponent());
+            if (temp.isDatabaseConnected()) {
+                createDeleteDialog(temp.getModel());
+            } else {
+                JOptionPane.showMessageDialog(new JFrame(), "Database not connected");
+            }
         });
         return line;
     }
 
-    private JMenuItem initRectangleInstrumentItem() {
-        JMenuItem rectangle = new JMenuItem("<html><font color='#d6d6d6'>Rectangle</font></html>");
+    private JMenuItem initFindPatientItem() {
+        JMenuItem rectangle = new JMenuItem("<html><font color='#d6d6d6'>Find patient</font></html>");
         rectangle.setBackground(Color.darkGray);
         rectangle.addActionListener(actionEvent -> {
-//            ((DrawArea) (MainWindow.tabBar.getSelectedComponent())).rectangle();
-
+            var temp = (HospitalTablePane) (MainWindow.tabBar.getSelectedComponent());
+            if (temp.isDatabaseConnected()) {
+                createSearchDialog(temp.getModel());
+            } else {
+                JOptionPane.showMessageDialog(new JFrame(), "Database not connected");
+            }
         });
         return rectangle;
     }
 
-    private JMenuItem initEllipseInstrumentItem() {
-        JMenuItem ellipse = new JMenuItem("<html><font color='#d6d6d6'>Ellipse</font></html>");
-        ellipse.setBackground(Color.darkGray);
-        ellipse.addActionListener(actionEvent -> {
-//            ((DrawArea) (MainWindow.tabBar.getSelectedComponent())).ellipse();
-        });
-        return ellipse;
+    private void createAddDialog(AbstractPatientDatabaseModel model) {
+        AddPatientDialog dialog = new AddPatientDialog(new AddPatientPanelController(model));
+        dialogInit(dialog);
     }
 
-    private JMenuItem initTextInstrumentItem() {
-        JMenuItem text = new JMenuItem("<html><font color='#d6d6d6'>Text</font></html>");
-        text.setBackground(Color.darkGray);
-        text.addActionListener(actionEvent -> {
-//            ((DrawArea) (MainWindow.tabBar.getSelectedComponent())).text();
-        });
-        return text;
+    private void createDeleteDialog(AbstractPatientDatabaseModel model) {
+        RemovePatientDialog dialog = new RemovePatientDialog(new RemovePatientPanelController(model));
+        dialogInit(dialog);
     }
 
-    private JMenuItem initSelectionRectangleInstrumentItem() {
-        JMenuItem selectionRectangle = new JMenuItem("<html><font color='#d6d6d6'>Select</font></html>");
-        selectionRectangle.setBackground(Color.darkGray);
-        selectionRectangle.addActionListener(actionEvent -> {
-//            ((DrawArea) (MainWindow.tabBar.getSelectedComponent())).selection();
-        });
-        return selectionRectangle;
+    private void createSearchDialog(AbstractPatientDatabaseModel model) {
+        SearchPatientDialog dialog = new SearchPatientDialog(new SearchPatientPanelController(model));
+        dialogInit(dialog);
     }
 
-    private JMenuItem initLassoInstrumentItem() {
-        JMenuItem lasso = new JMenuItem("<html><font color='#d6d6d6'>Lasso</font></html>");
-        lasso.setBackground(Color.darkGray);
-        lasso.addActionListener(actionEvent -> {
-//            ((DrawArea) (MainWindow.tabBar.getSelectedComponent())).lasso();
-        });
-        return lasso;
+    private void dialogInit(JFrame dialog) {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int width = (int) (screenSize.getWidth() * 0.4);
+        int height = (int) (screenSize.getHeight() * 0.4);
+        dialog.setBounds((screenSize.width - width) / 2, (screenSize.height - height) / 2, width, height);
+        dialog.setVisible(true);
     }
 
-    private JMenuItem initZoomInstrumentItem() {
-        JMenuItem zoom = new JMenuItem("<html><font color='#d6d6d6'>Zoom</font></html>");
-        zoom.setBackground(Color.darkGray);
-        zoom.addActionListener(actionEvent -> {
-//            ((DrawArea) (MainWindow.tabBar.getSelectedComponent())).zoom();
-        });
-        return zoom;
-    }
 
     private void initHelpMenu() {
         JMenuItem about = initAboutItem();

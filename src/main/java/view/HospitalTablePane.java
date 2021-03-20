@@ -10,10 +10,9 @@ import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 
 public class HospitalTablePane extends JPanel {
-    private AbstractHospitalTableController controller;
+    private final AbstractHospitalTableController controller;
     private final Box buttonsLayout = Box.createHorizontalBox();
     private final JButton startPageButton = new JButton();
     private final JButton backButton = new JButton();
@@ -91,7 +90,7 @@ public class HospitalTablePane extends JPanel {
             Image img = ImageIO.read(getClass().getResource(path));
             dimg = img.getScaledInstance(32, 32, Image.SCALE_SMOOTH);
         } catch (IOException exception) {
-            //ToDO normal catch
+            JOptionPane.showMessageDialog(new JFrame(), "Something wrong with buttons icons");
             exception.printStackTrace();
         }
         assert dimg != null;
@@ -142,7 +141,6 @@ public class HospitalTablePane extends JPanel {
     public void setTableData() {
         updatePagesInformation();
         var database = controller.getDatabase();
-        System.out.println("HospitalTablePane:setTableData " + Arrays.toString(database));
         for (int i = 0; i < database.length; i++) {
             if (database[i] != null) {
                 table.setValueAt(database[i].getPatientName(), i, 0);
@@ -198,46 +196,10 @@ public class HospitalTablePane extends JPanel {
 
     public void saveDatabaseToFile(File file) {
         if (controller.isDatabaseConnect()) {
-            if (!controller.saveDatabaseFromFile(file))
+            if (!controller.saveDatabaseToFile(file))
                 JOptionPane.showMessageDialog(new JFrame(), "Database not Saved!");
         } else
             JOptionPane.showMessageDialog(new JFrame(), "Database not connected");
-    }
-
-    public JTextField getRowsCountAtThePageTextField() {
-        return rowsCountAtThePageTextField;
-    }
-
-    public Box getButtonsLayout() {
-        return buttonsLayout;
-    }
-
-    public JButton getStartPageButton() {
-        return startPageButton;
-    }
-
-    public JButton getBackButton() {
-        return backButton;
-    }
-
-    public JButton getForwardButton() {
-        return forwardButton;
-    }
-
-    public JButton getEndPageButton() {
-        return endPageButton;
-    }
-
-    public JLabel getDatabaseStatusLabel() {
-        return databaseStatusLabel;
-    }
-
-    public JLabel getCurrentPageNumberLabel() {
-        return currentPageNumberLabel;
-    }
-
-    public JLabel getPagesCountLabel() {
-        return pagesCountLabel;
     }
 
     public void setModel(AbstractPatientDatabaseModel model) {
@@ -276,13 +238,13 @@ public class HospitalTablePane extends JPanel {
 
         @Override
         public void onContentChange() {
-            System.out.println("HospitalTablePane:ModelChangeListener hear");
             controller.updateDatabaseInfo();
             setTableData();
         }
 
         @Override
         public void onNameChange() {
+
         }
     }
 }

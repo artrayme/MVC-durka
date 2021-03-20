@@ -18,9 +18,7 @@ public class XmlLoader {
     public static AbstractPatientDatabaseModel load(File file) throws ParserConfigurationException, SAXException, IOException {
 
         SAXParserFactory factory = SAXParserFactory.newInstance();
-        SAXParser parser;
-
-        parser = factory.newSAXParser();
+        SAXParser parser = factory.newSAXParser();
 
         SAXReaderHandler saxReaderHandler = new SAXReaderHandler();
         parser.parse(file, saxReaderHandler);
@@ -76,6 +74,8 @@ public class XmlLoader {
                     doctorName = nodeText;
                 } else if (lastElementName.equals(XmlConstants.CONCLUSION)) {
                     conclusion = nodeText;
+                } else{
+                    throw new RuntimeException();
                 }
             }
         }

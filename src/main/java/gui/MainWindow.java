@@ -11,13 +11,13 @@ import java.awt.*;
 public class MainWindow extends JFrame {
     public static final JTabbedPane tabBar = new JTabbedPane();
 
-    public final MenuBar menuBar = new MenuBar();
+    public final MenuBar menu = new MenuBar();
     public final ToolBar toolBar = new ToolBar();
     public static int tabsCount = 0;
 
     public MainWindow() {
         setLayout(new BorderLayout());
-        this.setJMenuBar(menuBar);
+        this.setJMenuBar(menu);
         tabBar.addTab("tab" + tabsCount++, new HospitalTablePane(new HospitalTablePaneController(null)));
 
         this.add(toolBar, BorderLayout.NORTH);
