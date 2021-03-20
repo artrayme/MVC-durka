@@ -1,7 +1,5 @@
 package view.dialogs;
 
-import model.abstractmodel.AbstractPatientDatabaseModel;
-import model.implementation.DataStruct;
 import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
@@ -11,14 +9,10 @@ import java.awt.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Properties;
 
-public abstract class AbstractPatientInfoPanel extends JPanel {
-    protected final BorderLayout mainLayout = new BorderLayout();
-    protected final JPanel patientInformationLayout = new JPanel(new GridLayout(6, 2));
-    protected final JPanel buttonsLayout = new JPanel(new GridLayout(1, 2));
-    protected final JButton confirmButton = new JButton("Confirm");
-    protected final JButton cancelButton = new JButton("Cancel");
+public class PatientInfoPanel extends JPanel {
 
     protected final JLabel patientNameLabel = new JLabel("Patient's name");
     protected final JLabel patientAddressOfRegistrationLabel = new JLabel("Address of registration");
@@ -34,12 +28,8 @@ public abstract class AbstractPatientInfoPanel extends JPanel {
     protected final JTextField doctorNameField = new JTextField();
     protected final JTextField conclusionField = new JTextField();
 
-    protected AbstractPatientDatabaseModel model;
-
     public void init() {
-        setLayout(mainLayout);
-        add(patientInformationLayout, BorderLayout.CENTER);
-        add(buttonsLayout, BorderLayout.SOUTH);
+        setLayout(new GridLayout(6, 2));
 
         initPatientNameField();
         initPatientAddressOfRegistrationField();
@@ -48,27 +38,46 @@ public abstract class AbstractPatientInfoPanel extends JPanel {
         initDoctorNameField();
         initConclusionField();
 
-        initConfirmButton();
-        initCancelButton();
-
         addAllComponentsOnPatientInformationLayout();
-        buttonsLayout.add(confirmButton);
-        buttonsLayout.add(cancelButton);
+    }
+
+    public String getPatientName() {
+        return patientNameField.getText();
+    }
+
+    public String getPatientAddressOfRegistration() {
+        return patientAddressOfRegistrationField.getText();
+    }
+
+    public Date getPatientBirthDate() {
+        return (Date) patientBirthDatePicker.getModel().getValue();
+    }
+
+    public Date getAcceptanceDate() {
+        return (Date) patientAcceptanceDatePicker.getModel().getValue();
+    }
+
+    public String getDoctorName() {
+        return doctorNameField.getText();
+    }
+
+    public String getConclusion() {
+        return conclusionField.getText();
     }
 
     private void addAllComponentsOnPatientInformationLayout() {
-        patientInformationLayout.add(patientNameLabel);
-        patientInformationLayout.add(patientNameField);
-        patientInformationLayout.add(patientAddressOfRegistrationLabel);
-        patientInformationLayout.add(patientAddressOfRegistrationField);
-        patientInformationLayout.add(patientBirthDateLabel);
-        patientInformationLayout.add(patientBirthDatePicker);
-        patientInformationLayout.add(patientAcceptanceDateLabel);
-        patientInformationLayout.add(patientAcceptanceDatePicker);
-        patientInformationLayout.add(doctorNameLabel);
-        patientInformationLayout.add(doctorNameField);
-        patientInformationLayout.add(conclusionLabel);
-        patientInformationLayout.add(conclusionField);
+        add(patientNameLabel);
+        add(patientNameField);
+        add(patientAddressOfRegistrationLabel);
+        add(patientAddressOfRegistrationField);
+        add(patientBirthDateLabel);
+        add(patientBirthDatePicker);
+        add(patientAcceptanceDateLabel);
+        add(patientAcceptanceDatePicker);
+        add(doctorNameLabel);
+        add(doctorNameField);
+        add(conclusionLabel);
+        add(conclusionField);
     }
 
     private void initPatientNameField() {
@@ -105,16 +114,6 @@ public abstract class AbstractPatientInfoPanel extends JPanel {
 
     }
 
-    protected abstract void initConfirmButton();
-
-
-    protected abstract void initCancelButton();
-
-    public void setModel(AbstractPatientDatabaseModel model){
-        this.model = model;
-    }
-
-
     private class DateLabelFormatter extends JFormattedTextField.AbstractFormatter {
 
         private final String datePattern = "dd-MM-yyyy";
@@ -126,7 +125,7 @@ public abstract class AbstractPatientInfoPanel extends JPanel {
         }
 
         @Override
-        public String valueToString(Object value) throws ParseException {
+        public String valueToString(Object value) {
             if (value != null) {
                 Calendar cal = (Calendar) value;
                 return dateFormatter.format(cal.getTime());

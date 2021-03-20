@@ -1,7 +1,7 @@
 package gui;
 
 
-import view.HospitalTableMainWindow;
+import controller.implementation.HospitalTablePaneController;
 import view.HospitalTablePane;
 import view.ToolBar;
 
@@ -18,7 +18,7 @@ public class MainWindow extends JFrame {
     public MainWindow() {
         setLayout(new BorderLayout());
         this.setJMenuBar(menuBar);
-        tabBar.addTab("tab"+tabsCount++, new HospitalTableMainWindow(null, new HospitalTablePane()));
+        tabBar.addTab("tab" + tabsCount++, new HospitalTablePane(new HospitalTablePaneController(null)));
 
         this.add(toolBar, BorderLayout.NORTH);
         this.add(tabBar, BorderLayout.CENTER);

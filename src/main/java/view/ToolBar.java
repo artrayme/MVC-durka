@@ -1,11 +1,14 @@
 package view;
 
+import controller.implementation.AddPatientPanelController;
+import controller.implementation.RemovePatientPanelController;
+import controller.implementation.SearchPatientPanelController;
 import gui.MainWindow;
 import model.abstractmodel.AbstractPatientDatabaseModel;
 import model.implementation.Database;
-import view.dialogs.AddPatientDialog;
-import view.dialogs.DeletePatientDialog;
-import view.dialogs.SearchPatientDialog;
+import view.dialogs.addpatient.AddPatientDialog;
+import view.dialogs.removepatient.RemovePatientDialog;
+import view.dialogs.searchpatients.SearchPatientDialog;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -61,7 +64,7 @@ public class ToolBar extends JPanel {
         newDatabaseButton.setIcon(initButtonIcon("/icons/new_file.png"));
         newDatabaseButton.setBackground(new Color(220, 220, 220));
         newDatabaseButton.addActionListener(actionEvent -> {
-            ((HospitalTableMainWindow) (MainWindow.tabBar.getSelectedComponent())).setModel(new Database());
+            ((HospitalTablePane) (MainWindow.tabBar.getSelectedComponent())).setModel(new Database());
             lastClicked.setBackground(new Color(220, 220, 220));
             lastClicked = newDatabaseButton;
             newDatabaseButton.setBackground(new Color(118, 246, 74));
@@ -74,8 +77,8 @@ public class ToolBar extends JPanel {
         newElementButton.addActionListener(actionEvent -> {
             lastClicked.setBackground(new Color(220, 220, 220));
             lastClicked = newElementButton;
-            var temp = (HospitalTableMainWindow) (MainWindow.tabBar.getSelectedComponent());
-            if (temp.getIsDatabaseConnect()) {
+            var temp = (HospitalTablePane) (MainWindow.tabBar.getSelectedComponent());
+            if (temp.isDatabaseConnected()) {
                 newElementButton.setBackground(new Color(118, 246, 74));
                 createAddDialog(temp.getModel());
             } else {
@@ -86,17 +89,17 @@ public class ToolBar extends JPanel {
     }
 
     private void createAddDialog(AbstractPatientDatabaseModel model) {
-        AddPatientDialog dialog = new AddPatientDialog(model);
+        AddPatientDialog dialog = new AddPatientDialog(new AddPatientPanelController(model));
         dialogInit(dialog);
     }
 
     private void createDeleteDialog(AbstractPatientDatabaseModel model) {
-        DeletePatientDialog dialog = new DeletePatientDialog(model);
+        RemovePatientDialog dialog = new RemovePatientDialog(new RemovePatientPanelController(model));
         dialogInit(dialog);
     }
 
     private void createSearchDialog(AbstractPatientDatabaseModel model) {
-        SearchPatientDialog dialog = new SearchPatientDialog(model);
+        SearchPatientDialog dialog = new SearchPatientDialog(new SearchPatientPanelController(model));
         dialogInit(dialog);
     }
 
@@ -115,8 +118,8 @@ public class ToolBar extends JPanel {
             lastClicked.setBackground(new Color(220, 220, 220));
             lastClicked = deleteElementButton;
             deleteElementButton.setBackground(new Color(118, 246, 74));
-            var temp = (HospitalTableMainWindow) (MainWindow.tabBar.getSelectedComponent());
-            if (temp.getIsDatabaseConnect()) {
+            var temp = (HospitalTablePane) (MainWindow.tabBar.getSelectedComponent());
+            if (temp.isDatabaseConnected()) {
                 deleteElementButton.setBackground(new Color(118, 246, 74));
                 createDeleteDialog(temp.getModel());
             } else {
@@ -133,8 +136,8 @@ public class ToolBar extends JPanel {
             lastClicked.setBackground(new Color(220, 220, 220));
             lastClicked = findElementButton;
             findElementButton.setBackground(new Color(118, 246, 74));
-            var temp = (HospitalTableMainWindow) (MainWindow.tabBar.getSelectedComponent());
-            if (temp.getIsDatabaseConnect()) {
+            var temp = (HospitalTablePane) (MainWindow.tabBar.getSelectedComponent());
+            if (temp.isDatabaseConnected()) {
                 findElementButton.setBackground(new Color(118, 246, 74));
                 createSearchDialog(temp.getModel());
             } else {

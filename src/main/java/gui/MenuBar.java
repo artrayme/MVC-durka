@@ -1,6 +1,6 @@
 package gui;
 
-import view.HospitalTableMainWindow;
+import controller.implementation.HospitalTablePaneController;
 import view.HospitalTablePane;
 
 import javax.swing.*;
@@ -37,7 +37,7 @@ public class MenuBar extends JMenuBar {
         JMenuItem newTab = new JMenuItem("<html><font color='#d6d6d6'>New</font></html>");
         newTab.setBackground(Color.DARK_GRAY);
         newTab.addActionListener(actionEvent -> {
-            MainWindow.tabBar.add("tab" + MainWindow.tabsCount++, new HospitalTableMainWindow(null, new HospitalTablePane()));
+            MainWindow.tabBar.add("tab" + MainWindow.tabsCount++, new HospitalTablePane(new HospitalTablePaneController(null)));
         });
         return newTab;
     }
@@ -52,7 +52,7 @@ public class MenuBar extends JMenuBar {
             int result = fileChooser.showOpenDialog(this);
             if (result == JFileChooser.APPROVE_OPTION) {
                 File selectedFile = fileChooser.getSelectedFile();
-                ((HospitalTableMainWindow)(MainWindow.tabBar.getSelectedComponent())).saveDatabaseToFile(selectedFile);
+                ((HospitalTablePane)(MainWindow.tabBar.getSelectedComponent())).saveDatabaseToFile(selectedFile);
             }
         });
         return save;
@@ -67,7 +67,7 @@ public class MenuBar extends JMenuBar {
             int result = fileChooser.showOpenDialog(this);
             if (result == JFileChooser.APPROVE_OPTION) {
                 File selectedFile = fileChooser.getSelectedFile();
-                ((HospitalTableMainWindow)(MainWindow.tabBar.getSelectedComponent())).loadDatabaseFromFile(selectedFile);
+                ((HospitalTablePane)(MainWindow.tabBar.getSelectedComponent())).loadDatabaseFromFile(selectedFile);
             }
         });
         return load;

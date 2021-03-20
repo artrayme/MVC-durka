@@ -11,6 +11,7 @@ import java.util.function.Predicate;
 public abstract class AbstractPatientDatabaseModel implements Iterable<AbstractPatientDataStruct> {
     protected final List<DatabaseChangeListener> listeners = new ArrayList<>();
     protected final ArrayList<AbstractPatientDataStruct> database = new ArrayList<>();
+
     protected String name = "";
 
     public int getDatabaseSize() {
@@ -65,4 +66,6 @@ public abstract class AbstractPatientDatabaseModel implements Iterable<AbstractP
     public abstract AbstractPatientDatabaseModel searchDoctorName(String name);
 
     public abstract AbstractPatientDatabaseModel searchConclusion(String conclusion);
+
+    public abstract AbstractPatientDataStruct[] getDatabasePart(int start, int count);
 }
