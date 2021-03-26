@@ -1,9 +1,10 @@
 package controller.implementation;
 
-import model.abstractmodel.AbstractPatientDataStruct;
 import model.abstractmodel.AbstractPatientDatabaseModel;
 
-import java.util.Date;
+import java.awt.geom.GeneralPath;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class SearchPatientPanelController {
 
@@ -13,26 +14,48 @@ public class SearchPatientPanelController {
         this.model = model;
     }
 
-    public AbstractPatientDatabaseModel findPatients(AbstractPatientDataStruct patient) {
+    public AbstractPatientDatabaseModel findPatients(String patientName,
+                                                     String patientSecondName,
+                                                     String patientFatherName,
+                                                     String addressOfRegistration,
+                                                     Calendar birthDate,
+                                                     Calendar acceptanceDate,
+                                                     String doctorName,
+                                                     String doctorSecondName,
+                                                     String doctorFatherName,
+                                                     String conclusion) {
         AbstractPatientDatabaseModel result = model;
-        if (!patient.getPatientName().toString().isEmpty()) {
-            result = result.searchPatientName(patient.getPatientName().toString());
+        if (!patientName.isEmpty()) {
+            result = result.searchPatientName(patientName);
         }
-        if (!patient.getPatientAddressOfRegistration().toString().isEmpty()) {
-            result = result.searchAddressOfRegistration(patient.getPatientAddressOfRegistration().toString());
+        if (!patientSecondName.isEmpty()) {
+            result = result.searchPatientSecondName(patientSecondName);
         }
-        if (((Date) patient.getPatientBirthDate()).getTime() != 0) {
-            result = result.searchBirthDate((Date) patient.getPatientBirthDate());
+        if (!patientFatherName.isEmpty()) {
+            result = result.searchPatientFatherName(patientFatherName);
         }
-        if (((Date) patient.getPatientAcceptanceDate()).getTime() != 0) {
-            result = result.searchAcceptanceDate((Date) patient.getPatientBirthDate());
+        if (!addressOfRegistration.isEmpty()) {
+            result = result.searchAddressOfRegistration(addressOfRegistration);
         }
-        if (!patient.getDoctorName().toString().isEmpty()) {
-            result = result.searchDoctorName(patient.getDoctorName().toString());
+        if (birthDate!=null) {
+            result = result.searchBirthDate(birthDate);
         }
-        if (!patient.getConclusion().toString().isEmpty()) {
-            result = result.searchConclusion(patient.getConclusion().toString());
+        if (acceptanceDate!=null) {
+            result = result.searchAcceptanceDate(acceptanceDate);
+        }
+        if (!doctorName.isEmpty()) {
+            result = result.searchDoctorName(doctorName);
+        }
+        if (!doctorSecondName.isEmpty()) {
+            result = result.searchDoctorSecondName(doctorSecondName);
+        }
+        if (!doctorFatherName.isEmpty()) {
+            result = result.searchDoctorFatherName(doctorFatherName);
+        }
+        if (!conclusion.isEmpty()) {
+            result = result.searchConclusion(conclusion);
         }
         return result;
     }
+
 }

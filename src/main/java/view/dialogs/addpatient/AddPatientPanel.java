@@ -1,13 +1,11 @@
 package view.dialogs.addpatient;
 
 import controller.implementation.AddPatientPanelController;
-import model.abstractmodel.AbstractPatientDataStruct;
-import model.implementation.DataStruct;
 import view.dialogs.PatientInfoPanel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Date;
+import java.util.Calendar;
 
 public class AddPatientPanel extends JPanel {
     private final AddPatientPanelController controller;
@@ -43,11 +41,16 @@ public class AddPatientPanel extends JPanel {
     }
 
     private void addPatient() {
-        Date birthDate = infoPanel.getPatientBirthDate();
+        Calendar birthDate = infoPanel.getPatientBirthDate();
 
-        Date acceptanceDate = infoPanel.getAcceptanceDate();
+        Calendar acceptanceDate = infoPanel.getAcceptanceDate();
+
         if (infoPanel.getPatientName().isEmpty()) {
             JOptionPane.showMessageDialog(new JFrame(), "You should set the patient's name");
+        } else if (infoPanel.getPatientSecondName().isEmpty()) {
+            JOptionPane.showMessageDialog(new JFrame(), "You should set the patient's second name");
+        } else if (infoPanel.getPatientFatherName().isEmpty()) {
+            JOptionPane.showMessageDialog(new JFrame(), "You should set the patient's father name");
         } else if (infoPanel.getPatientAddressOfRegistration().isEmpty()) {
             JOptionPane.showMessageDialog(new JFrame(), "You should set the address of registration");
         } else if (birthDate == null) {
@@ -56,16 +59,23 @@ public class AddPatientPanel extends JPanel {
             JOptionPane.showMessageDialog(new JFrame(), "You should set the acceptance date");
         } else if (infoPanel.getDoctorName().isEmpty()) {
             JOptionPane.showMessageDialog(new JFrame(), "You should set the doctor's name");
+        } else if (infoPanel.getDoctorSecondName().isEmpty()) {
+            JOptionPane.showMessageDialog(new JFrame(), "You should set the doctor's second name");
+        } else if (infoPanel.getDoctorFatherName().isEmpty()) {
+            JOptionPane.showMessageDialog(new JFrame(), "You should set the doctor's father name");
         } else if (infoPanel.getConclusion().isEmpty()) {
             JOptionPane.showMessageDialog(new JFrame(), "You should set the conclusion");
         } else {
-            AbstractPatientDataStruct dataStruct = new DataStruct(infoPanel.getPatientName(),
+            if (!controller.addNewPatient(infoPanel.getPatientName(),
+                    infoPanel.getPatientSecondName(),
+                    infoPanel.getPatientFatherName(),
                     infoPanel.getPatientAddressOfRegistration(),
-                    birthDate.getTime(),
-                    acceptanceDate.getTime(),
+                    birthDate,
+                    acceptanceDate,
                     infoPanel.getDoctorName(),
-                    infoPanel.getConclusion());
-            if (!controller.addNewPatient(dataStruct)) {
+                    infoPanel.getDoctorSecondName(),
+                    infoPanel.getDoctorFatherName(),
+                    infoPanel.getConclusion())) {
                 JOptionPane.showMessageDialog(new JFrame(), "This patient cannot be added");
             }
         }

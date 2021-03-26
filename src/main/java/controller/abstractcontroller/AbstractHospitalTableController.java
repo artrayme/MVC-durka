@@ -1,6 +1,5 @@
 package controller.abstractcontroller;
 
-import model.abstractmodel.AbstractPatientDataStruct;
 import model.abstractmodel.AbstractPatientDatabaseModel;
 import model.abstractmodel.DatabaseChangeListener;
 
@@ -61,7 +60,7 @@ public abstract class AbstractHospitalTableController {
         isDatabaseConnect = model != null;
     }
 
-    public abstract AbstractPatientDataStruct[] getDatabase();
+    public abstract String[][] getDatabase();
 
     public abstract boolean loadDatabaseFromFile(File file);
 

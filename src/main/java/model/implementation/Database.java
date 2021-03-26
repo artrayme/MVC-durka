@@ -4,7 +4,7 @@ import model.abstractmodel.AbstractPatientDataStruct;
 import model.abstractmodel.AbstractPatientDatabaseModel;
 import model.abstractmodel.DatabaseChangeListener;
 
-import java.util.Date;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.function.Consumer;
 
@@ -39,6 +39,26 @@ public class Database extends AbstractPatientDatabaseModel implements Iterable<A
     }
 
     @Override
+    public AbstractPatientDatabaseModel searchPatientSecondName(String name) {
+        Database result = new Database();
+        database.forEach(e -> {
+            if (e.getPatientSecondName().equals(name))
+                result.add(e);
+        });
+        return result;
+    }
+
+    @Override
+    public AbstractPatientDatabaseModel searchPatientFatherName(String name) {
+        Database result = new Database();
+        database.forEach(e -> {
+            if (e.getPatientFatherName().equals(name))
+                result.add(e);
+        });
+        return result;
+    }
+
+    @Override
     public AbstractPatientDatabaseModel searchAddressOfRegistration(String address) {
         Database result = new Database();
         database.forEach(e -> {
@@ -50,10 +70,10 @@ public class Database extends AbstractPatientDatabaseModel implements Iterable<A
     }
 
     @Override
-    public AbstractPatientDatabaseModel searchBirthDate(Date date) {
+    public AbstractPatientDatabaseModel searchBirthDate(Calendar date) {
         Database result = new Database();
         database.forEach(e -> {
-            if (e.getPatientBirthDate().equals(date)) {
+            if (compareDates((Calendar) e.getPatientBirthDate(), date)) {
                 result.add(e);
             }
         });
@@ -61,10 +81,10 @@ public class Database extends AbstractPatientDatabaseModel implements Iterable<A
     }
 
     @Override
-    public AbstractPatientDatabaseModel searchAcceptanceDate(Date date) {
+    public AbstractPatientDatabaseModel searchAcceptanceDate(Calendar date) {
         Database result = new Database();
         database.forEach(e -> {
-            if (e.getPatientAcceptanceDate().equals(date)) {
+            if (compareDates((Calendar) e.getPatientAcceptanceDate(), date)) {
                 result.add(e);
             }
         });
@@ -76,6 +96,28 @@ public class Database extends AbstractPatientDatabaseModel implements Iterable<A
         Database result = new Database();
         database.forEach(e -> {
             if (e.getDoctorName().equals(name)) {
+                result.add(e);
+            }
+        });
+        return result;
+    }
+
+    @Override
+    public AbstractPatientDatabaseModel searchDoctorSecondName(String name) {
+        Database result = new Database();
+        database.forEach(e -> {
+            if (e.getDoctorSecondName().equals(name)) {
+                result.add(e);
+            }
+        });
+        return result;
+    }
+
+    @Override
+    public AbstractPatientDatabaseModel searchDoctorFatherName(String name) {
+        Database result = new Database();
+        database.forEach(e -> {
+            if (e.getDoctorFatherName().equals(name)) {
                 result.add(e);
             }
         });
@@ -130,4 +172,9 @@ public class Database extends AbstractPatientDatabaseModel implements Iterable<A
     public AbstractPatientDataStruct get(int index) {
         return database.get(index);
     }
-}
+
+    private boolean compareDates(Calendar date1, Calendar date2) {
+        return date1.get(Calendar.YEAR) == date2.get(Calendar.YEAR)
+                && date1.get(Calendar.MONTH) == date2.get(Calendar.MONTH)
+                && date1.get(Calendar.DAY_OF_MONTH) == date2.get(Calendar.DAY_OF_MONTH);
+    }}

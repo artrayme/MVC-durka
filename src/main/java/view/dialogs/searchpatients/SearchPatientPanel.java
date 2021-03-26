@@ -2,15 +2,12 @@ package view.dialogs.searchpatients;
 
 import controller.implementation.HospitalTablePaneController;
 import controller.implementation.SearchPatientPanelController;
-import model.abstractmodel.AbstractPatientDataStruct;
-import model.implementation.DataStruct;
-import model.implementation.Database;
+import model.abstractmodel.AbstractPatientDatabaseModel;
 import view.HospitalTablePane;
 import view.dialogs.PatientInfoPanel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Date;
 
 public class SearchPatientPanel extends JPanel {
 
@@ -21,7 +18,6 @@ public class SearchPatientPanel extends JPanel {
     private final JButton confirmButton = new JButton("Search");
     private final JButton cancelButton = new JButton("Cancel");
     private final PatientInfoPanel infoPanel = new PatientInfoPanel();
-
     private final HospitalTablePane tablePane = new HospitalTablePane(new HospitalTablePaneController(null));
 
     public SearchPatientPanel(SearchPatientPanelController controller) {
@@ -39,35 +35,25 @@ public class SearchPatientPanel extends JPanel {
 
     private void initConfirmButton() {
         confirmButton.addActionListener(e -> {
-//            tablePane.setModel(new Database());
-            tablePane.setModel(controller.findPatients(createPatient()));
+            AbstractPatientDatabaseModel foundPatient = controller.findPatients(infoPanel.getPatientName(),
+                    infoPanel.getPatientSecondName(),
+                    infoPanel.getPatientFatherName(),
+                    infoPanel.getPatientAddressOfRegistration(),
+                    infoPanel.getPatientBirthDate(),
+                    infoPanel.getAcceptanceDate(),
+                    infoPanel.getDoctorName(),
+                    infoPanel.getDoctorSecondName(),
+                    infoPanel.getDoctorFatherName(),
+                    infoPanel.getConclusion());
+            tablePane.setModel(foundPatient);
+            JOptionPane.showMessageDialog(new JFrame(), foundPatient.getDatabaseSize() + " patients was found");
         });
+
     }
 
     private void initCancelButton() {
         cancelButton.addActionListener(e -> {
             ((Window) getRootPane().getParent()).dispose();
         });
-    }
-
-    private AbstractPatientDataStruct createPatient() {
-        Date birthDate = new Date(0);
-        if (infoPanel.getPatientBirthDate()!=null){
-            birthDate = infoPanel.getPatientBirthDate();
-        }
-
-        Date acceptanceDate = new Date(0);
-        if (infoPanel.getPatientBirthDate()!=null){
-            acceptanceDate = infoPanel.getAcceptanceDate();
-        }
-
-        AbstractPatientDataStruct dataStruct = new DataStruct(infoPanel.getPatientName(),
-                infoPanel.getPatientAddressOfRegistration(),
-                birthDate.getTime(),
-                acceptanceDate.getTime(),
-                infoPanel.getDoctorName(),
-                infoPanel.getConclusion());
-
-        return dataStruct;
     }
 }

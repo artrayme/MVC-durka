@@ -9,65 +9,49 @@ import java.awt.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Properties;
 
 public class PatientInfoPanel extends JPanel {
 
     protected final JLabel patientNameLabel = new JLabel("Patient's name");
+    protected final JLabel patientSecondNameLabel = new JLabel("Patient's second name");
+    protected final JLabel patientFatherNameLabel = new JLabel("Patient's father name");
     protected final JLabel patientAddressOfRegistrationLabel = new JLabel("Address of registration");
     protected final JLabel patientBirthDateLabel = new JLabel("Birth date");
     protected final JLabel patientAcceptanceDateLabel = new JLabel("Acceptance date");
     protected final JLabel doctorNameLabel = new JLabel("Doctor's name");
+    protected final JLabel doctorSecondNameLabel = new JLabel("Doctor's second name");
+    protected final JLabel doctorFatherNameLabel = new JLabel("Doctor's father name");
     protected final JLabel conclusionLabel = new JLabel("Conclusion");
 
     protected final JTextField patientNameField = new JTextField();
+    protected final JTextField patientSecondNameField = new JTextField();
+    protected final JTextField patientFatherNameField = new JTextField();
     protected final JTextField patientAddressOfRegistrationField = new JTextField();
     protected JDatePickerImpl patientBirthDatePicker;
     protected JDatePickerImpl patientAcceptanceDatePicker;
     protected final JTextField doctorNameField = new JTextField();
+    protected final JTextField doctorSecondNameField = new JTextField();
+    protected final JTextField doctorFatherNameField = new JTextField();
     protected final JTextField conclusionField = new JTextField();
 
     public void init() {
-        setLayout(new GridLayout(6, 2));
+        setLayout(new GridLayout(10, 2));
 
-        initPatientNameField();
-        initPatientAddressOfRegistrationField();
         initPatientBirthDatePicker();
         initPatientAcceptanceDatePicker();
-        initDoctorNameField();
-        initConclusionField();
 
         addAllComponentsOnPatientInformationLayout();
-    }
-
-    public String getPatientName() {
-        return patientNameField.getText();
-    }
-
-    public String getPatientAddressOfRegistration() {
-        return patientAddressOfRegistrationField.getText();
-    }
-
-    public Date getPatientBirthDate() {
-        return (Date) patientBirthDatePicker.getModel().getValue();
-    }
-
-    public Date getAcceptanceDate() {
-        return (Date) patientAcceptanceDatePicker.getModel().getValue();
-    }
-
-    public String getDoctorName() {
-        return doctorNameField.getText();
-    }
-
-    public String getConclusion() {
-        return conclusionField.getText();
     }
 
     private void addAllComponentsOnPatientInformationLayout() {
         add(patientNameLabel);
         add(patientNameField);
+        add(patientSecondNameLabel);
+        add(patientSecondNameField);
+        add(patientFatherNameLabel);
+        add(patientFatherNameField);
         add(patientAddressOfRegistrationLabel);
         add(patientAddressOfRegistrationField);
         add(patientBirthDateLabel);
@@ -76,17 +60,62 @@ public class PatientInfoPanel extends JPanel {
         add(patientAcceptanceDatePicker);
         add(doctorNameLabel);
         add(doctorNameField);
+        add(doctorSecondNameLabel);
+        add(doctorSecondNameField);
+        add(doctorFatherNameLabel);
+        add(doctorFatherNameField);
         add(conclusionLabel);
         add(conclusionField);
     }
 
-    private void initPatientNameField() {
-
+    public String getPatientName() {
+        return patientNameField.getText();
     }
 
-    private void initPatientAddressOfRegistrationField() {
-
+    public String getPatientSecondName() {
+        return patientSecondNameField.getText();
     }
+
+    public String getPatientFatherName() {
+        return patientFatherNameField.getText();
+    }
+
+    public String getPatientAddressOfRegistration() {
+        return patientAddressOfRegistrationField.getText();
+    }
+
+    public GregorianCalendar getPatientBirthDate() {
+        if (patientBirthDatePicker.getModel().getValue() == null) return null;
+        return new GregorianCalendar(patientBirthDatePicker.getModel().getYear(),
+                patientBirthDatePicker.getModel().getMonth(),
+                patientBirthDatePicker.getModel().getDay());
+    }
+
+    public GregorianCalendar getAcceptanceDate() {
+        if (patientAcceptanceDatePicker.getModel().getValue() == null) return null;
+        return new GregorianCalendar(patientAcceptanceDatePicker.getModel().getYear(),
+                patientAcceptanceDatePicker.getModel().getMonth(),
+                patientAcceptanceDatePicker.getModel().getDay());
+    }
+
+    public String getDoctorName() {
+        return doctorNameField.getText();
+    }
+
+
+    public String getDoctorSecondName() {
+        return doctorSecondNameField.getText();
+    }
+
+
+    public String getDoctorFatherName() {
+        return doctorFatherNameField.getText();
+    }
+
+    public String getConclusion() {
+        return conclusionField.getText();
+    }
+
 
     private void initPatientBirthDatePicker() {
         Properties p = new Properties();
@@ -106,14 +135,6 @@ public class PatientInfoPanel extends JPanel {
         patientAcceptanceDatePicker = new JDatePickerImpl(datePanel, new DateLabelFormatter());
     }
 
-    private void initDoctorNameField() {
-
-    }
-
-    private void initConclusionField() {
-
-    }
-
     private class DateLabelFormatter extends JFormattedTextField.AbstractFormatter {
 
         private final String datePattern = "dd-MM-yyyy";
@@ -127,7 +148,7 @@ public class PatientInfoPanel extends JPanel {
         @Override
         public String valueToString(Object value) {
             if (value != null) {
-                Calendar cal = (Calendar) value;
+                Calendar cal = (GregorianCalendar) value;
                 return dateFormatter.format(cal.getTime());
             }
             return "";

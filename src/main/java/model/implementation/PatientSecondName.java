@@ -2,10 +2,10 @@ package model.implementation;
 
 import model.abstractmodel.PatientField;
 
-class DoctorName implements PatientField {
+class PatientSecondName implements PatientField {
     private final String name;
 
-    DoctorName(String name) {
+    PatientSecondName(String name) {
         this.name = name;
     }
 

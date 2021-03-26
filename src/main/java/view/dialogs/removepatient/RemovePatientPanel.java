@@ -2,15 +2,12 @@ package view.dialogs.removepatient;
 
 import controller.implementation.HospitalTablePaneController;
 import controller.implementation.RemovePatientPanelController;
-import model.abstractmodel.AbstractPatientDataStruct;
 import model.abstractmodel.AbstractPatientDatabaseModel;
-import model.implementation.DataStruct;
 import view.HospitalTablePane;
 import view.dialogs.PatientInfoPanel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Date;
 
 public class RemovePatientPanel extends JPanel {
 
@@ -39,11 +36,19 @@ public class RemovePatientPanel extends JPanel {
 
     private void initConfirmButton() {
         confirmButton.addActionListener(e -> {
-            AbstractPatientDatabaseModel foundPatients = controller.findPatients(createPatient());
+            AbstractPatientDatabaseModel foundPatients = controller.findPatients(infoPanel.getPatientName(),
+                    infoPanel.getPatientSecondName(),
+                    infoPanel.getPatientFatherName(),
+                    infoPanel.getPatientAddressOfRegistration(),
+                    infoPanel.getPatientBirthDate(),
+                    infoPanel.getAcceptanceDate(),
+                    infoPanel.getDoctorName(),
+                    infoPanel.getDoctorSecondName(),
+                    infoPanel.getDoctorFatherName(),
+                    infoPanel.getConclusion());
             tablePane.setModel(foundPatients);
             int removedCount = controller.removePatients(foundPatients);
             JOptionPane.showMessageDialog(new JFrame(), removedCount + " patients was removed");
-
         });
     }
 
@@ -51,27 +56,6 @@ public class RemovePatientPanel extends JPanel {
         cancelButton.addActionListener(e -> {
             ((Window) getRootPane().getParent()).dispose();
         });
-    }
-
-    private AbstractPatientDataStruct createPatient() {
-        Date birthDate = new Date(0);
-        if (infoPanel.getPatientBirthDate() != null) {
-            birthDate = infoPanel.getPatientBirthDate();
-        }
-
-        Date acceptanceDate = new Date(0);
-        if (infoPanel.getPatientBirthDate() != null) {
-            acceptanceDate = infoPanel.getAcceptanceDate();
-        }
-
-        AbstractPatientDataStruct dataStruct = new DataStruct(infoPanel.getPatientName(),
-                infoPanel.getPatientAddressOfRegistration(),
-                birthDate.getTime(),
-                acceptanceDate.getTime(),
-                infoPanel.getDoctorName(),
-                infoPanel.getConclusion());
-
-        return dataStruct;
     }
 
 }

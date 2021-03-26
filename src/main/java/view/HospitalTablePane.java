@@ -56,10 +56,12 @@ public class HospitalTablePane extends JPanel {
         buttonsLayout.add(rowsCountAtThePageTextField);
         buttonsLayout.add(currentPageNumberLabel);
         buttonsLayout.add(pagesCountLabel);
+
+        updatePagesAndDatabaseInformation();
     }
 
     private void initRowsAtPageField() {
-        rowsCountAtThePageTextField.setText(String.valueOf(0));
+        rowsCountAtThePageTextField.setText(String.valueOf(10));
         rowsCountAtThePageTextField.setMaximumSize(new Dimension(110, 32));
         rowsCountAtThePageTextField.setAlignmentX(1);
         rowsCountAtThePageTextField.setAlignmentX(1);
@@ -103,7 +105,7 @@ public class HospitalTablePane extends JPanel {
         backButton.setIcon(initButtonIcon("/icons/back_arrow.png"));
         backButton.addActionListener(e -> {
             controller.onBackPageButton();
-            setTableData();
+            updateTableData();
         });
     }
 
@@ -113,7 +115,7 @@ public class HospitalTablePane extends JPanel {
         forwardButton.setIcon(initButtonIcon("/icons/forward_arrow.png"));
         forwardButton.addActionListener(e -> {
             controller.onForwardPageButton();
-            setTableData();
+            updateTableData();
         });
 
     }
@@ -124,7 +126,7 @@ public class HospitalTablePane extends JPanel {
         startPageButton.setIcon(initButtonIcon("/icons/start_page.png"));
         startPageButton.addActionListener(e -> {
             controller.onStartPageButton();
-            setTableData();
+            updateTableData();
         });
     }
 
@@ -134,30 +136,21 @@ public class HospitalTablePane extends JPanel {
         endPageButton.setIcon(initButtonIcon("/icons/end_page.png"));
         endPageButton.addActionListener(e -> {
             controller.onEndPageButton();
-            setTableData();
+            updateTableData();
         });
     }
 
-    public void setTableData() {
-        updatePagesInformation();
-        var database = controller.getDatabase();
+    public void updateTableData() {
+        updatePagesAndDatabaseInformation();
+        String[][] database = controller.getDatabase();
         for (int i = 0; i < database.length; i++) {
-            if (database[i] != null) {
-                table.setValueAt(database[i].getPatientName(), i, 0);
-                table.setValueAt(database[i].getPatientAddressOfRegistration(), i, 1);
-                table.setValueAt(database[i].getPatientBirthDate(), i, 2);
-                table.setValueAt(database[i].getPatientAcceptanceDate(), i, 3);
-                table.setValueAt(database[i].getDoctorName(), i, 4);
-                table.setValueAt(database[i].getConclusion(), i, 5);
-            } else {
-                for (int j = 0; j < HospitalTable.COLUMN_NAMES.length; j++) {
-                    table.setValueAt("", i, j);
-                }
+            for (int j = 0; j < HospitalTable.COLUMN_NAMES.length; j++) {
+                table.setValueAt(database[i][j], i, j);
             }
         }
     }
 
-    public void updatePagesInformation() {
+    public void updatePagesAndDatabaseInformation() {
         pagesCountLabel.setText(" of " + (controller.getPagesCount() + 1));
         currentPageNumberLabel.setText("page " + (controller.getPageNumber() + 1));
         if (controller.isDatabaseConnect()) {
@@ -179,7 +172,8 @@ public class HospitalTablePane extends JPanel {
         }
         if (controller.onRowsCountAtThePageTextField(result)) {
             resizeTable(controller.getRowsAtPage(), HospitalTable.COLUMN_NAMES.length);
-            setTableData();
+            if (controller.isDatabaseConnect())
+                updateTableData();
         } else
             rowsCountAtThePageTextField.setBackground(Color.red);
     }
@@ -190,7 +184,7 @@ public class HospitalTablePane extends JPanel {
             enableButtons();
         } else
             JOptionPane.showMessageDialog(new JFrame(), "Something wrong with the xml database file");
-        setTableData();
+        updateTableData();
     }
 
 
@@ -207,8 +201,9 @@ public class HospitalTablePane extends JPanel {
         if (controller.isDatabaseConnect()) {
             controller.addModelActionListener(new ModelChangeListener());
             enableButtons();
-        } else disableButtons();
-        setTableData();
+        } else
+            disableButtons();
+        updateTableData();
     }
 
     private void enableButtons() {
@@ -239,7 +234,7 @@ public class HospitalTablePane extends JPanel {
         @Override
         public void onContentChange() {
             controller.updateDatabaseInfo();
-            setTableData();
+            updateTableData();
         }
 
         @Override

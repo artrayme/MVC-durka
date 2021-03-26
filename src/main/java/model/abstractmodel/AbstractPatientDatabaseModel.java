@@ -1,7 +1,7 @@
 package model.abstractmodel;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
@@ -56,13 +56,21 @@ public abstract class AbstractPatientDatabaseModel implements Iterable<AbstractP
 
     public abstract AbstractPatientDatabaseModel searchPatientName(String name);
 
+    public abstract AbstractPatientDatabaseModel searchPatientSecondName(String name);
+
+    public abstract AbstractPatientDatabaseModel searchPatientFatherName(String name);
+
     public abstract AbstractPatientDatabaseModel searchAddressOfRegistration(String address);
 
-    public abstract AbstractPatientDatabaseModel searchBirthDate(Date date);
+    public abstract AbstractPatientDatabaseModel searchBirthDate(Calendar date);
 
-    public abstract AbstractPatientDatabaseModel searchAcceptanceDate(Date date);
+    public abstract AbstractPatientDatabaseModel searchAcceptanceDate(Calendar date);
 
     public abstract AbstractPatientDatabaseModel searchDoctorName(String name);
+
+    public abstract AbstractPatientDatabaseModel searchDoctorSecondName(String name);
+
+    public abstract AbstractPatientDatabaseModel searchDoctorFatherName(String name);
 
     public abstract AbstractPatientDatabaseModel searchConclusion(String conclusion);
 

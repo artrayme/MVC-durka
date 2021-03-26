@@ -4,14 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 
 public class AboutWindow extends JFrame {
-    public AboutWindow(int x, int y){
+    public AboutWindow(int x, int y) {
         setBounds(x, y, 500, 500);
         setTitle("Help.......................");
         setVisible(true);
         addText();
     }
 
-    public void addText(){
+    public void addText() {
         TextArea label = new TextArea("Приложение должно быть построено при помощи шаблона проектирования Model-View-Controller.\n" +
                 "Приложение должно уметь:\n" +
                 "    • формировать массив записей путем ввода записей через окна диалога (для полей типа дата использовать соответствующий тип data и компонент для ввода дат);\n" +
@@ -26,6 +26,5 @@ public class AboutWindow extends JFrame {
                 "При демонстрации работы должно быть несколько файлов, в каждом из которых сохранено минимум 50 уникальных записей. Каждая запись должна быть более-менее осмысленная. Варианты вида “ssdsds” не подходят.\n");
         add(label);
     }
-
 
 }

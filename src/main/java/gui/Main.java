@@ -1,7 +1,5 @@
 package gui;
 
-import gui.MainWindow;
-
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import java.awt.*;

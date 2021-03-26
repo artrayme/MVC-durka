@@ -1,17 +1,19 @@
 package controller.implementation;
 
 import controller.abstractcontroller.AbstractHospitalTableController;
-import model.abstractmodel.AbstractPatientDataStruct;
 import model.abstractmodel.AbstractPatientDatabaseModel;
 import model.abstractmodel.DatabaseChangeListener;
 import org.xml.sax.SAXException;
 import saver.XmlLoader;
 import saver.XmlSaver;
+import view.HospitalTable;
 
 import javax.swing.*;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 import java.io.File;
 import java.io.IOException;
+import java.util.GregorianCalendar;
 
 public class HospitalTablePaneController extends AbstractHospitalTableController {
 
@@ -66,8 +68,18 @@ public class HospitalTablePaneController extends AbstractHospitalTableController
     }
 
     @Override
-    public AbstractPatientDataStruct[] getDatabase() {
-        return model.getDatabasePart(pageNumber * rowsAtPage, rowsAtPage);
+    public String[][] getDatabase() {
+        String[][] result = new String[rowsAtPage][HospitalTable.COLUMN_NAMES.length];
+        var modelPart = model.getDatabasePart(pageNumber * rowsAtPage, rowsAtPage);
+        for (int i = 0; i < modelPart.length && modelPart[i] != null; i++) {
+            result[i][0] = modelPart[i].getPatientName() + " " + modelPart[i].getPatientSecondName() + " " + modelPart[i].getPatientFatherName();
+            result[i][1] = (String) modelPart[i].getPatientAddressOfRegistration();
+            result[i][2] = ((GregorianCalendar) modelPart[i].getPatientBirthDate()).getTime().toString();
+            result[i][3] = ((GregorianCalendar) modelPart[i].getPatientAcceptanceDate()).getTime().toString();
+            result[i][4] = modelPart[i].getDoctorName() + " " + modelPart[i].getDoctorSecondName() + " " + modelPart[i].getDoctorFatherName();
+            result[i][5] = (String) modelPart[i].getConclusion();
+        }
+        return result;
     }
 
     @Override
@@ -86,7 +98,7 @@ public class HospitalTablePaneController extends AbstractHospitalTableController
         if (isDatabaseConnect) {
             try {
                 XmlSaver.save(file, model);
-            } catch (ParserConfigurationException e) {
+            } catch (ParserConfigurationException | TransformerException e) {
                 return false;
             }
             return true;

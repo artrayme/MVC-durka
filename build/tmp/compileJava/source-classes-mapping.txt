@@ -2,71 +2,79 @@ model/abstractmodel/PatientField.java
  model.abstractmodel.PatientField
 model/implementation/AcceptanceDate.java
  model.implementation.AcceptanceDate
-model/implementation/DataStruct.java
- model.implementation.DataStruct
-controller/implementation/HospitalTablePaneController.java
- controller.implementation.HospitalTablePaneController
-gui/AboutWindow.java
- gui.AboutWindow
-view/dialogs/searchpatients/SearchPatientDialog.java
- view.dialogs.searchpatients.SearchPatientDialog
+model/implementation/Database.java
+ model.implementation.Database
+view/dialogs/PatientInfoPanel.java
+ view.dialogs.PatientInfoPanel
+ view.dialogs.PatientInfoPanel$DateLabelFormatter
+model/implementation/DoctorFatherName.java
+ model.implementation.DoctorFatherName
 model/implementation/AddressOfRegistration.java
  model.implementation.AddressOfRegistration
 model/implementation/BirthDate.java
  model.implementation.BirthDate
-model/abstractmodel/AbstractPatientDataStruct.java
- model.abstractmodel.AbstractPatientDataStruct
+controller/implementation/AddPatientPanelController.java
+ controller.implementation.AddPatientPanelController
 saver/XmlConstants.java
  saver.XmlConstants
+model/implementation/PatientSecondName.java
+ model.implementation.PatientSecondName
 model/abstractmodel/DatabaseChangeListener.java
  model.abstractmodel.DatabaseChangeListener
-view/dialogs/PatientInfoPanel.java
- view.dialogs.PatientInfoPanel
- view.dialogs.PatientInfoPanel$DateLabelFormatter
-view/dialogs/removepatient/RemovePatientDialog.java
- view.dialogs.removepatient.RemovePatientDialog
-Main.java
- Main
-controller/implementation/SearchPatientPanelController.java
- controller.implementation.SearchPatientPanelController
-model/implementation/PatientName.java
- model.implementation.PatientName
-saver/XmlSaver.java
- saver.XmlSaver
 model/implementation/Conclusion.java
  model.implementation.Conclusion
+saver/XmlLoader.java
+ saver.XmlLoader
+ saver.XmlLoader$SAXReaderHandler
+model/abstractmodel/AbstractPatientDataStruct.java
+ model.abstractmodel.AbstractPatientDataStruct
+view/dialogs/removepatient/RemovePatientDialog.java
+ view.dialogs.removepatient.RemovePatientDialog
+model/implementation/PatientName.java
+ model.implementation.PatientName
+gui/Main.java
+ gui.Main
+view/dialogs/searchpatients/SearchPatientDialog.java
+ view.dialogs.searchpatients.SearchPatientDialog
 controller/abstractcontroller/AbstractHospitalTableController.java
  controller.abstractcontroller.AbstractHospitalTableController
 model/abstractmodel/AbstractPatientDatabaseModel.java
  model.abstractmodel.AbstractPatientDatabaseModel
-view/dialogs/addpatient/AddPatientPanel.java
- view.dialogs.addpatient.AddPatientPanel
+view/dialogs/addpatient/AddPatientDialog.java
+ view.dialogs.addpatient.AddPatientDialog
+controller/implementation/SearchPatientPanelController.java
+ controller.implementation.SearchPatientPanelController
+model/implementation/PatientFatherName.java
+ model.implementation.PatientFatherName
+model/implementation/DoctorSecondName.java
+ model.implementation.DoctorSecondName
+model/implementation/DoctorName.java
+ model.implementation.DoctorName
 view/HospitalTable.java
  view.HospitalTable
  view.HospitalTable$1
-model/implementation/DoctorName.java
- model.implementation.DoctorName
-controller/implementation/AddPatientPanelController.java
- controller.implementation.AddPatientPanelController
+saver/XmlSaver.java
+ saver.XmlSaver
 controller/implementation/RemovePatientPanelController.java
  controller.implementation.RemovePatientPanelController
-view/dialogs/addpatient/AddPatientDialog.java
- view.dialogs.addpatient.AddPatientDialog
+view/dialogs/addpatient/AddPatientPanel.java
+ view.dialogs.addpatient.AddPatientPanel
+gui/AboutWindow.java
+ gui.AboutWindow
+model/implementation/DataStruct.java
+ model.implementation.DataStruct
 view/ToolBar.java
  view.ToolBar
 view/HospitalTablePane.java
  view.HospitalTablePane
  view.HospitalTablePane$ModelChangeListener
-saver/XmlLoader.java
- saver.XmlLoader
- saver.XmlLoader$SAXReaderHandler
 view/dialogs/searchpatients/SearchPatientPanel.java
  view.dialogs.searchpatients.SearchPatientPanel
+controller/implementation/HospitalTablePaneController.java
+ controller.implementation.HospitalTablePaneController
 gui/MenuBar.java
  gui.MenuBar
 view/dialogs/removepatient/RemovePatientPanel.java
  view.dialogs.removepatient.RemovePatientPanel
-model/implementation/Database.java
- model.implementation.Database
 gui/MainWindow.java
  gui.MainWindow

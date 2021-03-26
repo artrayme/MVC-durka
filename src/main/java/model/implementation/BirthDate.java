@@ -2,11 +2,17 @@ package model.implementation;
 
 import model.abstractmodel.PatientField;
 
-import java.util.Date;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
-class BirthDate extends Date implements PatientField {
+class BirthDate extends GregorianCalendar implements PatientField {
+
     BirthDate(long date) {
-        super(date);
+        setTimeInMillis(date);
+    }
+
+    BirthDate(Calendar date) {
+        setTime(date.getTime());
     }
 
     @Override
