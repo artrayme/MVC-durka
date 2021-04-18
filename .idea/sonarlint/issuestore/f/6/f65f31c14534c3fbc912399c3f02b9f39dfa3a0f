@@ -1,0 +1,30 @@
+
+n	java:S109"TAssign this magic number 500 to a well-named constant, and use the constant instead.(ß•ÿÿÿÿÿ
+n	java:S109"TAssign this magic number 500 to a well-named constant, and use the constant instead.(ß•ÿÿÿÿÿ
+V	java:S110"<This class has 6 parents which is greater than 5 authorized.(ÛäÒ˜úÿÿÿÿ
+e	java:S103"KSplit this 133 characters long line (which is greater than 120 authorized).(Ü£´ğùÿÿÿÿ
+e	java:S103"KSplit this 180 characters long line (which is greater than 120 authorized).(ì¦ã«şÿÿÿÿ
+`	java:S103"KSplit this 154 characters long line (which is greater than 120 authorized).(Ã÷ôß
+`	java:S103"KSplit this 241 characters long line (which is greater than 120 authorized).(‚°¡ì
+e	java:S103"KSplit this 173 characters long line (which is greater than 120 authorized).(Ğè‡˜ûÿÿÿÿ
+`	java:S103"KSplit this 175 characters long line (which is greater than 120 authorized).(îÀŞï
+`	java:S103"KSplit this 158 characters long line (which is greater than 120 authorized).(í‘×ï
+`	java:S103"KSplit this 250 characters long line (which is greater than 120 authorized).(½çÜ
+e	java:S103"KSplit this 474 characters long line (which is greater than 120 authorized).(œúÁ»øÿÿÿÿ
+e	java:S103"KSplit this 660 characters long line (which is greater than 120 authorized).(Õéì›ÿÿÿÿÿ
+e	java:S103"KSplit this 223 characters long line (which is greater than 120 authorized).(¥›Çıÿÿÿÿ
+I
+java:S2208".Explicitly import the specific classes needed.(Ìí¿Üüÿÿÿÿ
+D
+java:S2208".Explicitly import the specific classes needed.(ï´µ©
+e
+java:S1699"JRemove this call from a constructor to the overridable "setBounds" method.(ß•ÿÿÿÿÿ
+_
+java:S1699	"IRemove this call from a constructor to the overridable "setTitle" method.(ÜÌÍ–
+a
+java:S1699
+"KRemove this call from a constructor to the overridable "setVisible" method.(³€®µ
+^
+java:S1699"HRemove this call from a constructor to the overridable "addText" method.(ŸïË
+M
+java:S6126"2Replace this String concatenation with Text block.(Ü£´ğùÿÿÿÿ

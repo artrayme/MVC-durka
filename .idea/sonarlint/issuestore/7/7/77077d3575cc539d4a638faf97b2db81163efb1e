@@ -1,0 +1,57 @@
+
+j	java:S109«"TAssign this magic number 0.4 to a well-named constant, and use the constant instead.(·®º„
+G
+java:S1108v"1Move this "else" keyword to a new dedicated line.(å¥ž‡
+<
+java:S2211."!Specify a type for: 'actionEvent'(›öý½øÿÿÿÿ
+G
+java:S1602.",Remove useless curly braces around statement(›öý½øÿÿÿÿ
+C
+java:S2325+"(Make "initNewTabItem" a "static" method.(ÔõÝÂÿÿÿÿÿ
+G
+java:S1602_",Remove useless curly braces around statement(ÀÑÓÒøÿÿÿÿ
+]	java:S881/"HExtract this increment or decrement operator into a dedicated statement.(¾ºþ»
+<
+java:S2211G"!Specify a type for: 'actionEvent'(“‚ûýÿÿÿÿ
+<
+java:S2211r"!Specify a type for: 'actionEvent'(ÎíÌ·ýÿÿÿÿ
+A
+java:S2325\"&Make "initExitItem" a "static" method.(÷ï†ùÿÿÿÿ
+H
+java:S1602»",Remove useless curly braces around statement(éþž©øÿÿÿÿ
+j	java:S109¬"TAssign this magic number 0.4 to a well-named constant, and use the constant instead.(Ê‡¿ì
+g	java:S109­"RAssign this magic number 2 to a well-named constant, and use the constant instead.(¸ë´d
+<
+java:S2211V"!Specify a type for: 'actionEvent'(æÃÒÅþÿÿÿÿ
+d
+java:S1699"NRemove this call from a constructor to the overridable "setBackground" method.(È«¼Œ
+H
+java:S1108…"1Move this "else" keyword to a new dedicated line.(å¥ž‡
+<
+java:S2211_"!Specify a type for: 'actionEvent'(ÀÑÓÒøÿÿÿÿ
+8
+java:S2211"!Specify a type for: 'actionEvent'(¶äñ
+=
+java:S2325S"'Make "initCloseItem" a "static" method.(ˆ¾Í•
+`	java:S103/"KSplit this 128 characters long line (which is greater than 120 authorized).(¾ºþ»
+G
+java:S1602V",Remove useless curly braces around statement(æÃÒÅþÿÿÿÿ
+H
+java:S1108“"1Move this "else" keyword to a new dedicated line.(å¥ž‡
+g	java:S109­"RAssign this magic number 2 to a well-named constant, and use the constant instead.(¸ë´d
+=
+java:S2211»"!Specify a type for: 'actionEvent'(éþž©øÿÿÿÿ
+L
+java:S2696/"6Make the enclosing method "static" or remove this set.(¾ºþ»
+I
+java:S2208".Explicitly import the specific classes needed.(Ìí¿Üüÿÿÿÿ
+=
+java:S2211"!Specify a type for: 'actionEvent'(Æÿó£úÿÿÿÿ
+<
+java:S22118"!Specify a type for: 'actionEvent'(€¹Ž¾øÿÿÿÿ
+r
+java:S1192w"WDefine a constant instead of duplicating this literal "Database not connected" 3 times.(íš”÷ýÿÿÿÿ
+D
+java:S2208".Explicitly import the specific classes needed.(ï´µ©
+@
+java:S2325©"$Make "dialogInit" a "static" method.(Ç•¦˜üÿÿÿÿ

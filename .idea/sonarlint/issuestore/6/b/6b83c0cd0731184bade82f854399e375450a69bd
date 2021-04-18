@@ -1,0 +1,52 @@
+
+m	java:S109—"RAssign this magic number 5 to a well-named constant, and use the constant instead.(Ÿùïˆøÿÿÿÿ
+G
+java:S1602B",Remove useless curly braces around statement(ÅÖ¸ıÿÿÿÿ
+H
+java:S1108ö"1Move this "else" keyword to a new dedicated line.(åÒÙİ
+m	java:S109”"RAssign this magic number 2 to a well-named constant, and use the constant instead.(¤âÄ¹øÿÿÿÿ
+H
+java:S1108\"2Move this "catch" keyword to a new dedicated line.(×¬œÓ
+I
+java:S2208".Explicitly import the specific classes needed.(Ìí¿Üüÿÿÿÿ
+H
+java:S1108¦"1Move this "else" keyword to a new dedicated line.(å¥‡
+N
+java:S1108±"2Move this "catch" keyword to a new dedicated line.(é–³öûÿÿÿÿ
+H
+java:S1108¿"1Move this "else" keyword to a new dedicated line.(ÔÍØ
+h	java:S109["SAssign this magic number 32 to a well-named constant, and use the constant instead.(èêÄ
+H
+java:S1108É"1Move this "else" keyword to a new dedicated line.(ÔÍØ
+9
+java:S1148^"#Use a logger to log this exception.(òçøì
+H
+java:S1108·"1Move this "else" keyword to a new dedicated line.(ÔÍØ
+m	java:S109–"RAssign this magic number 4 to a well-named constant, and use the constant instead.(îÎÁ»úÿÿÿÿ
+2
+java:S2211B"Specify a type for: 'e'(ÅÖ¸ıÿÿÿÿ
+2
+java:S2211}"Specify a type for: 'e'(¥ş‚ıÿÿÿÿ
+H
+java:S1108˜"1Move this "else" keyword to a new dedicated line.(å¥‡
+-
+java:S2211r"Specify a type for: 'e'(Éô£
+;
+java:S1166\"%Either log or rethrow this exception.(×¬œÓ
+h	java:S109["SAssign this magic number 32 to a well-named constant, and use the constant instead.(èêÄ
+B
+java:S1948",Make "controller" transient or serializable.(»‡à
+
+java:S1186š"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(û¾•Åøÿÿÿÿ
+-
+java:S2211h"Specify a type for: 'e'(€ùª
+h	java:S109•"RAssign this magic number 3 to a well-named constant, and use the constant instead.(Öô˜Ù
+i	java:S109?"TAssign this magic number 110 to a well-named constant, and use the constant instead.(òÁ†°
+3
+java:S2211‡"Specify a type for: 'e'(ˆìˆ„ÿÿÿÿÿ
+H
+java:S1135]"2Complete the task associated to this TODO comment.(¢Åî„
+D
+java:S2208
+".Explicitly import the specific classes needed.(ï´µ©
+h	java:S109?"SAssign this magic number 32 to a well-named constant, and use the constant instead.(òÁ†°

@@ -1,0 +1,28 @@
+
+U
+java:S1118":Add a private constructor to hide the implicit public one.(½ì‹·şÿÿÿÿ
+g	java:S112N"FDefine and throw a dedicated exception instead of using a generic one.(¯åÕøÿÿÿÿ8¢±ï…/
+G
+java:S1108K"1Move this "else" keyword to a new dedicated line.(¥ùàŒ
+`	java:S1037"KSplit this 132 characters long line (which is greater than 120 authorized).(ãÜã¦
+t
+java:S2972"^Reduce this class from 51 lines to the maximum allowed 25 or externalize it in a public class.(³Ş„
+L
+java:S1108E"1Move this "else" keyword to a new dedicated line.(üê£ûÿÿÿÿ
+G
+java:S1108I"1Move this "else" keyword to a new dedicated line.(¬òí×
+J
+java:S1066-"/Merge this if statement with the enclosing one.(³öÉ¹şÿÿÿÿ
+Á
+java:S1160"¥Refactor this method to throw at most one checked exception instead of: javax.xml.parsers.ParserConfigurationException, org.xml.sax.SAXException, java.io.IOException(²Ñ­šüÿÿÿÿ
+P
+java:S1258":Add a constructor to the class, or provide default values.(³Ş„
+G
+java:S1108G"1Move this "else" keyword to a new dedicated line.(íÛ€Ú
+e	java:S103"KSplit this 127 characters long line (which is greater than 120 authorized).(²Ñ­šüÿÿÿÿ
+G
+java:S1108C"1Move this "else" keyword to a new dedicated line.(âŞÀæ
+N
+java:S1108M"1Move this "else" keyword to a new dedicated line.(å¥‡8Å€î…/
+N
+java:S2755"3Disable access to external entities in XML parsing.(ÂÿÕ‹ÿÿÿÿÿ

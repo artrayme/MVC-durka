@@ -1,0 +1,12 @@
+
+u	java:S109"TAssign this magic number 0.8 to a well-named constant, and use the constant instead.(³ãËüùÿÿÿÿ8áìÆ/
+P
+java:S2208".Explicitly import the specific classes needed.(Ìí¿Üüÿÿÿÿ8áìÆ/
+s	java:S109"RAssign this magic number 2 to a well-named constant, and use the constant instead.(©…‘Äúÿÿÿÿ8áìÆ/
+q
+java:S1128"TRemove this unnecessary import: same package classes are always implicitly imported.(ãœÿò8¥…/
+p	java:S109"TAssign this magic number 0.8 to a well-named constant, and use the constant instead.(ºßµ’8áìÆ/
+s	java:S109"RAssign this magic number 2 to a well-named constant, and use the constant instead.(©…‘Äúÿÿÿÿ8áìÆ/
+K
+java:S2208".Explicitly import the specific classes needed.(ï´µ©8áìÆ/
+t	java:S109"SAssign this magic number 14 to a well-named constant, and use the constant instead.(ÑíïËÿÿÿÿÿ8áìÆ/

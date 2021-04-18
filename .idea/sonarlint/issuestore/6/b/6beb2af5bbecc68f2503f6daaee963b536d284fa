@@ -1,0 +1,96 @@
+
+h	java:S109~"SAssign this magic number 74 to a well-named constant, and use the constant instead.(¬úì
+i	java:S109{"TAssign this magic number 118 to a well-named constant, and use the constant instead.(Õâ Ò
+h	java:S1097"SAssign this magic number 32 to a well-named constant, and use the constant instead.(èêÄ
+M
+java:S11088"2Move this "catch" keyword to a new dedicated line.(±Ÿ—±ÿÿÿÿÿ
+o	java:S109ˆ"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ
+j	java:S109†"TAssign this magic number 220 to a well-named constant, and use the constant instead.(¯«ÃÃ
+h	java:S109{"SAssign this magic number 74 to a well-named constant, and use the constant instead.(Õâ Ò
+G
+java:S1108T"1Move this "else" keyword to a new dedicated line.(å¥‡
+n	java:S109F"TAssign this magic number 246 to a well-named constant, and use the constant instead.(‡œ¶Ùúÿÿÿÿ
+h	java:S1097"SAssign this magic number 32 to a well-named constant, and use the constant instead.(èêÄ
+n	java:S109t"TAssign this magic number 220 to a well-named constant, and use the constant instead.(–ã­øÿÿÿÿ
+<
+java:S2211M"!Specify a type for: 'actionEvent'(—åÔ¸ùÿÿÿÿ
+i	java:S109U"TAssign this magic number 246 to a well-named constant, and use the constant instead.(ÓÌµ•
+i	java:S109m"TAssign this magic number 0.4 to a well-named constant, and use the constant instead.(Ê‡¿ì
+Z
+java:S5612u"DReduce this lambda expression number of lines from 13 to at most 10.(ÒÓÕğ
+i	java:S109R"TAssign this magic number 118 to a well-named constant, and use the constant instead.(’Œ¦Á
+f	java:S109n"RAssign this magic number 2 to a well-named constant, and use the constant instead.(¸ë´d
+o	java:S109"TAssign this magic number 246 to a well-named constant, and use the constant instead.(á¸‡Òşÿÿÿÿ
+i	java:S109x"TAssign this magic number 118 to a well-named constant, and use the constant instead.(Õâ Ò
+7
+java:S2211B"!Specify a type for: 'actionEvent'(¡—µ‡
+=
+java:S2211‡"!Specify a type for: 'actionEvent'(¼¾½§ıÿÿÿÿ
+j	java:S109Š"TAssign this magic number 246 to a well-named constant, and use the constant instead.(üÕĞ
+n	java:S109v"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ
+j	java:S109Š"TAssign this magic number 118 to a well-named constant, and use the constant instead.(üÕĞ
+`
+java:S5612‡"DReduce this lambda expression number of lines from 13 to at most 10.(¼¾½§ıÿÿÿÿ
+f	java:S109n"RAssign this magic number 2 to a well-named constant, and use the constant instead.(¸ë´d
+d
+java:S1699"NRemove this call from a constructor to the overridable "setBackground" method.(Ÿ¨É
+@
+java:S11668"%Either log or rethrow this exception.(±Ÿ—±ÿÿÿÿÿ
+r
+java:S1192V"WDefine a constant instead of duplicating this literal "Database not connected" 3 times.(íš”÷ıÿÿÿÿ
+n	java:S109L"TAssign this magic number 220 to a well-named constant, and use the constant instead.(°·İşÿÿÿÿ
+i	java:S109"SAssign this magic number 74 to a well-named constant, and use the constant instead.(üÕĞ
+_
+java:S5612M"DReduce this lambda expression number of lines from 12 to at most 10.(—åÔ¸ùÿÿÿÿ
+i	java:S109Š"SAssign this magic number 74 to a well-named constant, and use the constant instead.(üÕĞ
+i	java:S109{"TAssign this magic number 246 to a well-named constant, and use the constant instead.(Õâ Ò
+n	java:S109"SAssign this magic number 74 to a well-named constant, and use the constant instead.(á¸‡Òşÿÿÿÿ
+h	java:S109~"SAssign this magic number 74 to a well-named constant, and use the constant instead.(¬úì
+n	java:S109L"TAssign this magic number 220 to a well-named constant, and use the constant instead.(°·İşÿÿÿÿ
+m	java:S109F"SAssign this magic number 74 to a well-named constant, and use the constant instead.(‡œ¶Ùúÿÿÿÿ
+n	java:S109t"TAssign this magic number 220 to a well-named constant, and use the constant instead.(–ã­øÿÿÿÿ
+j	java:S109"TAssign this magic number 246 to a well-named constant, and use the constant instead.(üÕĞ
+n	java:S109t"TAssign this magic number 220 to a well-named constant, and use the constant instead.(–ã­øÿÿÿÿ
+h	java:S109R"SAssign this magic number 74 to a well-named constant, and use the constant instead.(’Œ¦Á
+n	java:S109N"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ
+G
+java:S1108}"1Move this "else" keyword to a new dedicated line.(å¥‡
+i	java:S109A"TAssign this magic number 220 to a well-named constant, and use the constant instead.(¾ÇøÙ
+n	java:S109L"TAssign this magic number 220 to a well-named constant, and use the constant instead.(°·İşÿÿÿÿ
+i	java:S109A"TAssign this magic number 220 to a well-named constant, and use the constant instead.(¾ÇøÙ
+h	java:S109U"SAssign this magic number 74 to a well-named constant, and use the constant instead.(ÓÌµ•
+n	java:S109N"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ
+n	java:S109v"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ
+i	java:S109x"TAssign this magic number 246 to a well-named constant, and use the constant instead.(Õâ Ò
+o	java:S109ˆ"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ
+?
+java:S2325j"$Make "dialogInit" a "static" method.(Ç•¦˜üÿÿÿÿ
+7
+java:S2211u"!Specify a type for: 'actionEvent'(ÒÓÕğ
+H
+java:S1108"1Move this "else" keyword to a new dedicated line.(å¥‡
+n	java:S109D"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ
+n	java:S109D"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ
+n	java:S109N"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ
+i	java:S109A"TAssign this magic number 220 to a well-named constant, and use the constant instead.(¾ÇøÙ
+h	java:S109x"SAssign this magic number 74 to a well-named constant, and use the constant instead.(Õâ Ò
+i	java:S109~"TAssign this magic number 246 to a well-named constant, and use the constant instead.(¬úì
+n	java:S109D"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ
+n	java:S109"SAssign this magic number 74 to a well-named constant, and use the constant instead.(á¸‡Òşÿÿÿÿ
+i	java:S109R"TAssign this magic number 246 to a well-named constant, and use the constant instead.(’Œ¦Á
+h	java:S109U"SAssign this magic number 74 to a well-named constant, and use the constant instead.(ÓÌµ•
+O
+java:S22218"4Catch a list of specific exception subtypes instead.(±Ÿ—±ÿÿÿÿÿ
+j	java:S109†"TAssign this magic number 220 to a well-named constant, and use the constant instead.(¯«ÃÃ
+9
+java:S11489"#Use a logger to log this exception.(Ç’Çê
+j	java:S109"TAssign this magic number 118 to a well-named constant, and use the constant instead.(üÕĞ
+j	java:S109†"TAssign this magic number 220 to a well-named constant, and use the constant instead.(¯«ÃÃ
+o	java:S109ˆ"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ
+i	java:S109l"TAssign this magic number 0.4 to a well-named constant, and use the constant instead.(·®º„
+n	java:S109F"TAssign this magic number 118 to a well-named constant, and use the constant instead.(‡œ¶Ùúÿÿÿÿ
+n	java:S109v"TAssign this magic number 220 to a well-named constant, and use the constant instead.(‹î­üÿÿÿÿ
+I
+java:S2208".Explicitly import the specific classes needed.(Ìí¿Üüÿÿÿÿ
+D
+java:S2208".Explicitly import the specific classes needed.(ï´µ©

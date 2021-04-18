@@ -1,0 +1,27 @@
+
+œ
+java:S1186S"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(íæÞÈùÿÿÿÿ
+C
+java:S2325m"-Make "initDoctorNameField" a "static" method.(×ÞÃ¤
+I
+java:S2325S".Make "initPatientNameField" a "static" method.(íæÞÈùÿÿÿÿ
+—
+java:S1186m"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(×ÞÃ¤
+I
+java:S2208".Explicitly import the specific classes needed.(Ìí¿Üüÿÿÿÿ
+l	java:S109 "RAssign this magic number 6 to a well-named constant, and use the constant instead.(õŸù¼øÿÿÿÿ
+l	java:S109 "RAssign this magic number 2 to a well-named constant, and use the constant instead.(õŸù¼øÿÿÿÿ
+—
+java:S1186q"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ùÊ„ã
+C
+java:S2325q"-Make "initConclusionField" a "static" method.(ùÊ„ã
+<
+java:S2694u"!Make this a "static" inner class.(«‹ñøÿÿÿÿ
+œ
+java:S1186W"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(×ö®ïÿÿÿÿÿ
+<
+java:S1170w"!Make this final field static too.(‡žÍ‘ûÿÿÿÿ
+Z
+java:S2325W"?Make "initPatientAddressOfRegistrationField" a "static" method.(×ö®ïÿÿÿÿÿ
+D
+java:S2208".Explicitly import the specific classes needed.(ï´µ©

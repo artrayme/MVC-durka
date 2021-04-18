@@ -1,0 +1,56 @@
+## Root logger option
+#log4j.rootLogger=ERROR, stdout, file
+#
+## Redirect log messages to console
+#log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+#log4j.appender.stdout.Target=System.out
+#log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+#log4j.appender.stdout.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n
+#
+## Rirect log messages to a log file
+#log4j.appender.file=org.apache.log4j.RollingFileAppender
+#log4j.appender.file.File=/home/artemy/testJavaLogger.log
+#log4j.appender.file.MaxFileSize=5MB
+#log4j.appender.file.MaxBackupIndex=10
+#log4j.appender.file.layout=org.apache.log4j.PatternLayout
+#log4j.appender.file.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n
+
+#status = error
+#dest = err
+#name = PropertiesConfig
+#
+#property.filename = /home/artemy/testJavaLogger.log
+#
+#filter.threshold.type = ThresholdFilter
+#filter.threshold.level = debug
+#
+#appender.console.type = Console
+#appender.console.name = STDOUT
+#appender.console.layout.type = PatternLayout
+#appender.console.layout.pattern = %m%n
+#appender.console.filter.threshold.type = ThresholdFilter
+#appender.console.filter.threshold.level = info
+#
+#appender.rolling.type = RollingFile
+#appender.rolling.name = RollingFile
+#appender.rolling.fileName = ${filename}
+#appender.rolling.filePattern = /home/artemy/testJavaLogger-%d{MM-dd-yy-HH-mm-ss}-%i.log.gz
+#appender.rolling.layout.type = PatternLayout
+#appender.rolling.layout.pattern = %d %p %C{1.} [%t] %m%n
+#appender.rolling.policies.type = Policies
+#appender.rolling.policies.time.type = TimeBasedTriggeringPolicy
+#appender.rolling.policies.time.interval = 2
+#appender.rolling.policies.time.modulate = true
+#appender.rolling.policies.size.type = SizeBasedTriggeringPolicy
+#appender.rolling.policies.size.size=100MB
+#appender.rolling.strategy.type = DefaultRolloverStrategy
+#appender.rolling.strategy.max = 5
+#
+#logger.rolling.name = Main
+#logger.rolling.level = debug
+#logger.rolling.additivity = false
+#logger.rolling.appenderRef.rolling.ref = RollingFile
+#
+#rootLogger.level = info
+#rootLogger.appenderRef.stdout.ref = STDOUT
+

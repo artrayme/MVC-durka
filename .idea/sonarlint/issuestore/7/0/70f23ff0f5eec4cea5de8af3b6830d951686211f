@@ -1,0 +1,23 @@
+
+b	java:S881"HExtract this increment or decrement operator into a dedicated statement.(ÊÜ‰¨şÿÿÿÿ
+D
+java:S2208	".Explicitly import the specific classes needed.(ï´µ©
+p
+java:S1104"UMake tabsCount a static final constant or non-public and provide accessors if needed.(½ŒÅ¬úÿÿÿÿ
+`
+java:S1699"JRemove this call from a constructor to the overridable "setLayout" method.(°ßÉ
+Z
+java:S1699"DRemove this call from a constructor to the overridable "add" method.(¤µªÔ
+J
+java:S1444"/Make this "public static tabsCount" field final(½ŒÅ¬úÿÿÿÿ
+I
+java:S2208".Explicitly import the specific classes needed.(Ìí¿Üüÿÿÿÿ
+`
+java:S3052"ERemove this initialization to "0", the compiler will do that for you.(½ŒÅ¬úÿÿÿÿ
+V	java:S110"<This class has 6 parents which is greater than 5 authorized.(Ü¡§Ãùÿÿÿÿ
+_
+java:S1699"DRemove this call from a constructor to the overridable "add" method.(âèõ‘ÿÿÿÿÿ
+g
+java:S1699"LRemove this call from a constructor to the overridable "setJMenuBar" method.(Üıûøşÿÿÿÿ
+Z
+java:S1213"?Move this static variable to comply with Java Code Conventions.(½ŒÅ¬úÿÿÿÿ

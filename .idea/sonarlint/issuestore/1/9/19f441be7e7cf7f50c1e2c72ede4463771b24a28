@@ -1,0 +1,13 @@
+
+h	java:S109<"SAssign this magic number 15 to a well-named constant, and use the constant instead.(ƒ×šó
+@
+java:S1166Y"%Either log or rethrow this exception.(ÊÊÆƒüÿÿÿÿ
+I
+java:S2208".Explicitly import the specific classes needed.(Ìí¿Üüÿÿÿÿ
+G
+java:S1108N"2Move this "catch" keyword to a new dedicated line.(ñ‘ør
+4	java:S113"'Add a new line at the end of this file.
+M
+java:S1108Y"2Move this "catch" keyword to a new dedicated line.(ÊÊÆƒüÿÿÿÿ
+:
+java:S1166N"%Either log or rethrow this exception.(ñ‘ør

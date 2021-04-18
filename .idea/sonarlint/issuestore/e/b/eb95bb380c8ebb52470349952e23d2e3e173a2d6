@@ -1,0 +1,5 @@
+
+l
+java:S2250,"QThis call to "remove()" may be a performance hot spot if the collection is large.(ëÎöúÿÿÿÿ
+n
+java:S2250'"SThis call to "contains()" may be a performance hot spot if the collection is large.(Ø±¯Òúÿÿÿÿ
