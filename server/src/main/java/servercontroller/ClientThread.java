@@ -6,11 +6,12 @@ import model.implementation.DataStruct;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.GregorianCalendar;
-import java.util.NoSuchElementException;
-import java.util.Scanner;
+import java.util.*;
 
 public class ClientThread extends Thread {
 
@@ -29,6 +30,7 @@ public class ClientThread extends Thread {
     private static final Logger logger = LogManager.getLogger(MainWindow.class);
     private final Socket incoming;
     private final AbstractPatientDatabaseModel model;
+    private final HashMap<String, AbstractPatientDatabaseModel> models = new HashMap();
     private OutputStream outputStream;
     private InputStream inputStream;
     Scanner in;
@@ -78,29 +80,94 @@ public class ClientThread extends Thread {
         model.add(new DataStruct(in.nextLine(), in.nextLine(), in.nextLine(), in.nextLine(), in.nextLine(), in.nextLine(), in.nextLine(), in.nextLine(), in.nextLine(), in.nextLine()));
     }
 
+    private void searchPatient() {
+
+//        DataStruct(in.nextLine(), in.nextLine(), in.nextLine(), in.nextLine(), in.nextLine(), in.nextLine(), in.nextLine(), in.nextLine(), in.nextLine(), in.nextLine()));
+        String patientName = in.nextLine();
+        String patientSecondName = in.nextLine();
+        String patientFatherName = in.nextLine();
+        String addressOfRegistration = in.nextLine();
+        Calendar birthDate = null;
+        try {
+            long time = Long.parseLong(in.nextLine());
+            birthDate = new GregorianCalendar();
+            birthDate.setTimeInMillis(time);
+        }catch (NumberFormatException e){
+
+        }
+        Calendar acceptanceDate = null;
+        try {
+            long time = Long.parseLong(in.nextLine());
+            acceptanceDate = new GregorianCalendar();
+            acceptanceDate.setTimeInMillis(time);
+        }catch (NumberFormatException e){
+
+        }
+        String doctorName = in.nextLine();
+        String doctorSecondName = in.nextLine();
+        String doctorFatherName = in.nextLine();
+
+        String conclusion = in.nextLine();
+
+        AbstractPatientDatabaseModel result = model;
+
+        if (!patientName.isEmpty()) {
+            result = result.searchPatientName(patientName);
+        }
+        if (!patientSecondName.isEmpty()) {
+            result = result.searchPatientSecondName(patientSecondName);
+        }
+        if (!patientFatherName.isEmpty()) {
+            result = result.searchPatientFatherName(patientFatherName);
+        }
+        if (!addressOfRegistration.isEmpty()) {
+            result = result.searchAddressOfRegistration(addressOfRegistration);
+        }
+        if (birthDate != null) {
+            result = result.searchBirthDate(birthDate);
+        }
+        if (acceptanceDate != null) {
+            result = result.searchAcceptanceDate(acceptanceDate);
+        }
+        if (!doctorName.isEmpty()) {
+            result = result.searchDoctorName(doctorName);
+        }
+        if (!doctorSecondName.isEmpty()) {
+            result = result.searchDoctorSecondName(doctorSecondName);
+        }
+        if (!doctorFatherName.isEmpty()) {
+            result = result.searchDoctorFatherName(doctorFatherName);
+        }
+        if (!conclusion.isEmpty()) {
+            result = result.searchConclusion(conclusion);
+        }
+    }
+
+    private void removePatient() {
+
+    }
+
     private void commandChooser(String inputCommand) {
         String[] commandWithArguments = inputCommand.split(" ");
 
         ServerCommands command = ServerCommands.NOT_A_COMMAND;
         try {
             command = ServerCommands.valueOf(commandWithArguments[0]);
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             logger.warn("[Client] Not supported command = " + command);
         }
         switch (command) {
-            case GET_DATABASE_SIZE -> out.println(model==null?-1:model.getDatabaseSize());
+            case GET_DATABASE_SIZE -> out.println(model == null ? -1 : model.getDatabaseSize());
             case SET_DATABASE_NAME -> {
-                if (model != null) model.setName(commandWithArguments[1]);
+                if (model != null)
+                    model.setName(commandWithArguments[1]);
             }
-            case GET_DATABASE_NAME -> out.println(model==null?"DATABASE_NOT_CONNECTED":model.getName());
+            case GET_DATABASE_NAME -> out.println(model == null ? "DATABASE_NOT_CONNECTED" : model.getName());
             case GET_DATABASE_PART -> printDatabasePartToTheStream(commandWithArguments);
             case ADD -> addPatient();
-            case SEARCH -> {
-            }
-            case REMOVE -> {
-            }
+            case SEARCH -> searchPatient();
+            case REMOVE -> removePatient();
             case NOT_A_COMMAND -> out.println("NOT_SUPPORTED_COMMAND");
-
             default -> throw new IllegalStateException("Unexpected value: " + ServerCommands.valueOf(commandWithArguments[0]));
         }
 

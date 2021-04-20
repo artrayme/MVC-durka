@@ -23,6 +23,8 @@ public class ToolBar extends JPanel {
     private final JButton findElementButton = new JButton();
     private final JButton deleteElementButton = new JButton();
 
+    private final JLabel serverHostnameLabel = new JLabel("<html><font color='#d6d6d6'>Hostname</font></html>");
+    private final JLabel serverPortLabel = new JLabel("<html><font color='#d6d6d6'>Port</font></html>");
     private final JTextField serverHostnameField = new JTextField();
     private final JTextField serverPortField = new JTextField();
 
@@ -53,7 +55,9 @@ public class ToolBar extends JPanel {
         add(newElementButton);
         add(deleteElementButton);
         add(findElementButton);
+        add(serverHostnameLabel);
         add(serverHostnameField);
+        add(serverPortLabel);
         add(serverPortField);
     }
 
@@ -93,13 +97,14 @@ public class ToolBar extends JPanel {
         newDatabaseButton.setIcon(initButtonIcon("/icons/new_file.png"));
         newDatabaseButton.setBackground(new Color(220, 220, 220));
         newDatabaseButton.addActionListener(actionEvent -> {
-//            try {
-//                ((HospitalTablePane) (MainWindow.tabBar.getSelectedComponent())).setModel(new ServerDatabase(serverHostnameField.getText(), serverPort));
-//            } catch (IOException e) {
-//                //ToDo handle
-//                e.printStackTrace();
-//            }
-            ((HospitalTablePane) (MainWindow.tabBar.getSelectedComponent())).getModel().getDatabaseSize();
+            try {
+                System.out.println(serverHostnameField.getText());
+                System.out.println(serverPort);
+                ((HospitalTablePane) (MainWindow.tabBar.getSelectedComponent())).setModel(new ServerDatabase(serverHostnameField.getText(), serverPort));
+            } catch (IOException e) {
+                //ToDo handle
+                e.printStackTrace();
+            }
 
             lastClicked.setBackground(new Color(220, 220, 220));
             lastClicked = newDatabaseButton;

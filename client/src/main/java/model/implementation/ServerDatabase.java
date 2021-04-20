@@ -44,7 +44,6 @@ public class ServerDatabase implements AbstractPatientDatabaseModel {
 
     @Override
     public void add(String[] element) {
-        System.out.println("ADD");
         output.println(ServerCommands.ADD);
         for (int i = 0; i < element.length; i++) {
             output.println(element[i]);
@@ -52,12 +51,19 @@ public class ServerDatabase implements AbstractPatientDatabaseModel {
     }
 
     @Override
-    public int remove(String[] element) {
-        return 0;
+    public int remove(String[] params) {
+        output.println(ServerCommands.REMOVE);
+        for (int i = 0; i < params.length; i++) {
+            output.println(params[i]);
+        }
+        int result = input.nextInt();
+        if (input.hasNextLine()){ input.nextLine(); }
+        return result;
     }
 
     @Override
     public void remove(int index) {
+
     }
 
     @Override
@@ -72,7 +78,19 @@ public class ServerDatabase implements AbstractPatientDatabaseModel {
 
     @Override
     public AbstractPatientDatabaseModel search(String[] params) throws IOException {
-        return null;
+        output.println(ServerCommands.SEARCH);
+        for (int i = 0; i < params.length; i++) {
+            output.println(params[i]);
+        }
+        ServerDatabase result = new ServerDatabase(socket.getLocalAddress().getHostAddress(), socket.getPort());
+        while (input.hasNextLine()) {
+            String[] temp = new String[10];
+            for (int i = 0; i < 10; i++) {
+                temp[i] = input.nextLine();
+            }
+            result.add(temp);
+        }
+        return this;
     }
 
     @Override

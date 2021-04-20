@@ -27,7 +27,7 @@ public class SearchPatientPanelController {
 
         if (model != null) {
             params = new String[]{patientName, patientSecondName, patientFatherName,
-                    addressOfRegistration, birthDate.toString(), acceptanceDate.toString(),
+                    addressOfRegistration,  String.valueOf(birthDate.getTimeInMillis()), String.valueOf(acceptanceDate.getTimeInMillis()),
                     doctorName, doctorSecondName, doctorFatherName,
                     conclusion};
             AbstractPatientDatabaseModel result = model;
