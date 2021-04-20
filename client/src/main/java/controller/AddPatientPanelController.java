@@ -1,13 +1,11 @@
 package controller;
 
-import model.abstractmodel.AbstractPatientDataStruct;
 import model.abstractmodel.AbstractPatientDatabaseModel;
-import model.implementation.DataStruct;
 
 import java.util.Calendar;
 
 public class AddPatientPanelController {
-
+    protected String[] patientData;
     protected AbstractPatientDatabaseModel model;
 
     public AddPatientPanelController(AbstractPatientDatabaseModel model) {
@@ -24,11 +22,11 @@ public class AddPatientPanelController {
                                  String doctorSecondName,
                                  String doctorFatherName,
                                  String conclusion) {
-        AbstractPatientDataStruct patient = new DataStruct(patientName, patientSecondName, patientFatherName,
-                addressOfRegistration, birthDate, acceptanceDate,
-                doctorName, doctorSecondName, doctorFatherName, conclusion);
+        patientData = new String[]{patientName, patientSecondName, patientFatherName,
+                addressOfRegistration, String.valueOf(birthDate.getTimeInMillis()), String.valueOf(acceptanceDate.getTimeInMillis()),
+                doctorName, doctorSecondName, doctorFatherName, conclusion};
         if (model != null) {
-            model.add(patient);
+            model.add(patientData);
             return true;
         }
         return false;

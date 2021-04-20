@@ -7,45 +7,37 @@ import org.apache.logging.log4j.core.appender.AppenderLoggingException;
 import org.apache.logging.log4j.core.config.plugins.*;
 import org.apache.logging.log4j.core.layout.PatternLayout;
 
-// note: class name need not match the @Plugin name.
 @Plugin(name="MyCustomAppender", category="Core", elementType="appender", printObject=true)
 
 public final class MyCustomAppenderImpl extends AbstractAppender {
 
-    private final ReadWriteLock rwLock = new ReentrantReadWriteLock();
-    private final Lock readLock = rwLock.readLock();
+//    private final ReadWriteLock rwLock = new ReentrantReadWriteLock();
+//    private final Lock readLock = rwLock.readLock();
 
     protected MyCustomAppenderImpl(String name, Filter filter,
                                    Layout<? extends Serializable> layout, final boolean ignoreExceptions) {
         super(name, filter, layout, ignoreExceptions);
     }
 
-    // The append method is where the appender does the work.
-    // Given a log event, you are free to do with it what you want.
-    // This example demonstrates:
-    // 1. Concurrency: this method may be called by multiple threads concurrently
-    // 2. How to use layouts
-    // 3. Error handling
     @Override
     public void append(LogEvent event) {
-        readLock.lock();
-        try {
-            final byte[] bytes = getLayout().toByteArray(event);
-            System.out.print("!!!!!!!!  ");
-            System.out.write(bytes);
-        } catch (Exception ex) {
-            if (!ignoreExceptions()) {
-                throw new AppenderLoggingException(ex);
-            }
-        } finally {
-            readLock.unlock();
-        }
+//        readLock.lock();
+//        try {
+//            final byte[] bytes = getLayout().toByteArray(event);
+//            System.out.print("!!!!!!!!  ");
+//            System.out.write(bytes);
+//        } catch (Exception ex) {
+//            if (!ignoreExceptions()) {
+//                throw new AppenderLoggingException(ex);
+//            }
+//        } finally {
+//            readLock.unlock();
+//        }
+
+//        System.out.println("&&&&& " + event.getMessage().getFormattedMessage());
+        MainWindow.addLog(event.getMessage().getFormattedMessage() + "\n");
     }
 
-    // Your custom appender needs to declare a factory method
-    // annotated with `@PluginFactory`. Log4j will parse the configuration
-    // and call this factory method to construct an appender instance with
-    // the configured attributes.
     @PluginFactory
     public static MyCustomAppenderImpl createAppender(
             @PluginAttribute("name") String name,
@@ -62,27 +54,3 @@ public final class MyCustomAppenderImpl extends AbstractAppender {
         return new MyCustomAppenderImpl(name, filter, layout, true);
     }
 }
-
-//import org.apache.logging.log4j.core.Filter;
-//import org.apache.logging.log4j.core.Layout;
-//import org.apache.logging.log4j.core.LogEvent;
-//import org.apache.logging.log4j.core.appender.AbstractAppender;
-//import org.apache.logging.log4j.core.config.Property;
-//import org.apache.logging.log4j.core.config.plugins.Plugin;
-//
-//import java.io.Serializable;
-//
-//@Plugin(name = "MyCustomAppender", category = "Core",
-//        elementType = "appender", printObject = true)
-//public final class MyCustomAppenderImpl extends AbstractAppender {
-//
-//    protected MyCustomAppenderImpl(String name, Filter filter, Layout<? extends Serializable> layout, boolean ignoreExceptions, Property[] properties) {
-//        super(name, filter, layout, ignoreExceptions, properties);
-//    }
-//
-//    @Override
-//    public void append(LogEvent event) {
-//        System.out.println("!!!!!!!! " + event);
-//    }
-//    // other code for the plugin....
-//}

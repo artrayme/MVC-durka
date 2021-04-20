@@ -2,11 +2,13 @@ package controller;
 
 import model.abstractmodel.AbstractPatientDatabaseModel;
 
+import java.io.IOException;
 import java.util.Calendar;
 
 public class SearchPatientPanelController {
 
     protected final AbstractPatientDatabaseModel model;
+    protected String[] params;
 
     public SearchPatientPanelController(AbstractPatientDatabaseModel model) {
         this.model = model;
@@ -21,42 +23,18 @@ public class SearchPatientPanelController {
                                                      String doctorName,
                                                      String doctorSecondName,
                                                      String doctorFatherName,
-                                                     String conclusion) {
-        if (model!=null) {
+                                                     String conclusion) throws IOException {
+
+        if (model != null) {
+            params = new String[]{patientName, patientSecondName, patientFatherName,
+                    addressOfRegistration, birthDate.toString(), acceptanceDate.toString(),
+                    doctorName, doctorSecondName, doctorFatherName,
+                    conclusion};
             AbstractPatientDatabaseModel result = model;
-            if (!patientName.isEmpty()) {
-                result = result.searchPatientName(patientName);
-            }
-            if (!patientSecondName.isEmpty()) {
-                result = result.searchPatientSecondName(patientSecondName);
-            }
-            if (!patientFatherName.isEmpty()) {
-                result = result.searchPatientFatherName(patientFatherName);
-            }
-            if (!addressOfRegistration.isEmpty()) {
-                result = result.searchAddressOfRegistration(addressOfRegistration);
-            }
-            if (birthDate != null) {
-                result = result.searchBirthDate(birthDate);
-            }
-            if (acceptanceDate != null) {
-                result = result.searchAcceptanceDate(acceptanceDate);
-            }
-            if (!doctorName.isEmpty()) {
-                result = result.searchDoctorName(doctorName);
-            }
-            if (!doctorSecondName.isEmpty()) {
-                result = result.searchDoctorSecondName(doctorSecondName);
-            }
-            if (!doctorFatherName.isEmpty()) {
-                result = result.searchDoctorFatherName(doctorFatherName);
-            }
-            if (!conclusion.isEmpty()) {
-                result = result.searchConclusion(conclusion);
-            }
+            result = result.search(params);
             return result;
-        }
-        else return null;
+        } else
+            return null;
     }
 
 }

@@ -16,10 +16,15 @@ import java.awt.*;
 import java.io.IOException;
 
 public class ToolBar extends JPanel {
+    private int serverPort;
+
     private final JButton newDatabaseButton = new JButton();
     private final JButton newElementButton = new JButton();
     private final JButton findElementButton = new JButton();
     private final JButton deleteElementButton = new JButton();
+
+    private final JTextField serverHostnameField = new JTextField();
+    private final JTextField serverPortField = new JTextField();
 
     private JButton lastClicked = newDatabaseButton;
 
@@ -39,6 +44,7 @@ public class ToolBar extends JPanel {
         initNewElementButton();
         initFindElementButton();
         initDeleteElementButton();
+        initServerPortField();
     }
 
     private void addAll() {
@@ -47,6 +53,28 @@ public class ToolBar extends JPanel {
         add(newElementButton);
         add(deleteElementButton);
         add(findElementButton);
+        add(serverHostnameField);
+        add(serverPortField);
+    }
+
+    private void initServerPortField() {
+        serverPortField.addActionListener(e -> {
+            setServerPort();
+        });
+    }
+
+    private void setServerPort() {
+        try {
+            int result = Integer.parseInt(serverPortField.getText());
+            if (result >= 0 && result < 65535) {
+                serverPort = result;
+                serverPortField.setBackground(Color.white);
+            } else {
+                serverPortField.setBackground(Color.red);
+            }
+        } catch (NumberFormatException e) {
+            serverPortField.setBackground(Color.red);
+        }
     }
 
     private ImageIcon initButtonIcon(String path) {
@@ -55,6 +83,7 @@ public class ToolBar extends JPanel {
             Image resultImage = img.getScaledInstance(32, 32, Image.SCALE_SMOOTH);
             return new ImageIcon(resultImage);
         } catch (IOException exception) {
+            //ToDO
             JOptionPane.showMessageDialog(new JFrame(), "Something wrong at button image loading");
         }
         return new ImageIcon();
@@ -64,7 +93,14 @@ public class ToolBar extends JPanel {
         newDatabaseButton.setIcon(initButtonIcon("/icons/new_file.png"));
         newDatabaseButton.setBackground(new Color(220, 220, 220));
         newDatabaseButton.addActionListener(actionEvent -> {
-            ((HospitalTablePane) (MainWindow.tabBar.getSelectedComponent())).setModel(new ServerDatabase());
+//            try {
+//                ((HospitalTablePane) (MainWindow.tabBar.getSelectedComponent())).setModel(new ServerDatabase(serverHostnameField.getText(), serverPort));
+//            } catch (IOException e) {
+//                //ToDo handle
+//                e.printStackTrace();
+//            }
+            ((HospitalTablePane) (MainWindow.tabBar.getSelectedComponent())).getModel().getDatabaseSize();
+
             lastClicked.setBackground(new Color(220, 220, 220));
             lastClicked = newDatabaseButton;
             newDatabaseButton.setBackground(new Color(118, 246, 74));

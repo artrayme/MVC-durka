@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public abstract class AbstractPatientDatabaseModel implements Iterable<AbstractPatientDataStruct> {
+
     protected final List<DatabaseChangeListener> listeners = new ArrayList<>();
     protected final ArrayList<AbstractPatientDataStruct> database = new ArrayList<>();
 

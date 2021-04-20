@@ -2,14 +2,20 @@ package view.dialogs.removepatient;
 
 import controller.implementation.HospitalTablePaneController;
 import controller.RemovePatientPanelController;
+import gui.Main;
 import model.abstractmodel.AbstractPatientDatabaseModel;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import view.HospitalTablePane;
 import view.dialogs.PatientInfoPanel;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class RemovePatientPanel extends JPanel {
+
+    private static final Logger logger = LogManager.getLogger(Main.class);
 
     private final RemovePatientPanelController controller;
 
@@ -36,19 +42,26 @@ public class RemovePatientPanel extends JPanel {
 
     private void initConfirmButton() {
         confirmButton.addActionListener(e -> {
-            AbstractPatientDatabaseModel foundPatients = controller.findPatients(infoPanel.getPatientName(),
-                    infoPanel.getPatientSecondName(),
-                    infoPanel.getPatientFatherName(),
-                    infoPanel.getPatientAddressOfRegistration(),
-                    infoPanel.getPatientBirthDate(),
-                    infoPanel.getAcceptanceDate(),
-                    infoPanel.getDoctorName(),
-                    infoPanel.getDoctorSecondName(),
-                    infoPanel.getDoctorFatherName(),
-                    infoPanel.getConclusion());
-            tablePane.setModel(foundPatients);
-            int removedCount = controller.removePatients(foundPatients);
-            JOptionPane.showMessageDialog(new JFrame(), removedCount + " patients was removed");
+            AbstractPatientDatabaseModel foundPatients;
+            try {
+                foundPatients = controller.findPatients(infoPanel.getPatientName(),
+                        infoPanel.getPatientSecondName(),
+                        infoPanel.getPatientFatherName(),
+                        infoPanel.getPatientAddressOfRegistration(),
+                        infoPanel.getPatientBirthDate(),
+                        infoPanel.getAcceptanceDate(),
+                        infoPanel.getDoctorName(),
+                        infoPanel.getDoctorSecondName(),
+                        infoPanel.getDoctorFatherName(),
+                        infoPanel.getConclusion());
+                tablePane.setModel(foundPatients);
+                int removedCount = controller.removeFoundedPatients();
+                JOptionPane.showMessageDialog(new JFrame(), removedCount + " patients were removed");
+            } catch (IOException ioException) {
+                logger.warn("[RemoveDialog] Something wrong in patient search");
+                JOptionPane.showMessageDialog(new JFrame(), "Error in patient search");
+            }
+
         });
     }
 

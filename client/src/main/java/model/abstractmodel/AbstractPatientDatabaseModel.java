@@ -1,53 +1,28 @@
 package model.abstractmodel;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.function.Consumer;
 
-public interface AbstractPatientDatabaseModel extends Iterable<AbstractPatientDataStruct> {
+public interface AbstractPatientDatabaseModel {
+
     int getDatabaseSize();
 
-    void add(AbstractPatientDataStruct element);
+    void add(String[] element);
 
-    void remove(AbstractPatientDataStruct element);
+    int remove(String[] element);
 
     void remove(int index);
 
-    AbstractPatientDataStruct get(int index);
+    String[] get(int index);
 
     void setName(String name);
 
     String getName();
 
-    void addListener(DatabaseChangeListener listener);
-
-    void removeListener(DatabaseChangeListener listener);
+    AbstractPatientDatabaseModel search(String[] params) throws IOException;
 
 
-    Iterator<AbstractPatientDataStruct> iterator();
-
-    @Override
-    void forEach(Consumer<? super AbstractPatientDataStruct> action);
-
-    AbstractPatientDatabaseModel searchPatientName(String name);
-
-    AbstractPatientDatabaseModel searchPatientSecondName(String name);
-
-    AbstractPatientDatabaseModel searchPatientFatherName(String name);
-
-    AbstractPatientDatabaseModel searchAddressOfRegistration(String address);
-
-    AbstractPatientDatabaseModel searchBirthDate(Calendar date);
-
-    AbstractPatientDatabaseModel searchAcceptanceDate(Calendar date);
-
-    AbstractPatientDatabaseModel searchDoctorName(String name);
-
-    AbstractPatientDatabaseModel searchDoctorSecondName(String name);
-
-    AbstractPatientDatabaseModel searchDoctorFatherName(String name);
-
-    AbstractPatientDatabaseModel searchConclusion(String conclusion);
-
-    AbstractPatientDataStruct[] getDatabasePart(int start, int count);
+    String[][] getDatabasePart(int start, int count) throws IOException, ClassNotFoundException;
 }

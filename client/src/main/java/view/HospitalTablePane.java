@@ -1,6 +1,7 @@
 package view;
 
 import controller.abstractcontroller.AbstractHospitalTableController;
+import controller.implementation.HospitalTablePaneController;
 import model.abstractmodel.AbstractPatientDatabaseModel;
 
 import javax.imageio.ImageIO;
@@ -141,7 +142,12 @@ public class HospitalTablePane extends JPanel {
 
     public void updateTableData() {
         updatePagesAndDatabaseInformation();
-        String[][] database = controller.getDatabase();
+        String[][] database = new String[0][];
+        try {
+            database = controller.getDatabase();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         for (int i = 0; i < database.length; i++) {
             for (int j = 0; j < HospitalTable.COLUMN_NAMES.length; j++) {
                 table.setValueAt(database[i][j], i, j);
@@ -188,7 +194,6 @@ public class HospitalTablePane extends JPanel {
             JOptionPane.showMessageDialog(new JFrame(), "Something wrong with the xml database file");
         updateTableData();
     }
-
 
     public void saveDatabaseToFile(String fileName) {
         if (controller.isDatabaseConnect()) {

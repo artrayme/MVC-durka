@@ -1,5 +1,7 @@
 package gui;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import servercontroller.Server;
 
 import javax.swing.*;
@@ -8,15 +10,18 @@ import java.io.IOException;
 
 public class MainWindow extends JFrame {
 
+    private static final Logger logger = LogManager.getLogger(MainWindow.class);
+
     private final Server server;
 
-    private int serverPort = 8080;
+    private static final JTextArea SERVER_LOG_AREA = new JTextArea();
+
+    private int serverPort = 0;
     private boolean isServerOn = false;
     private final JTextField addressField = new JTextField();
     private final JButton serverUpDownButton = new JButton();
     private final Box controlComponents = new Box(BoxLayout.X_AXIS);
     private final JLabel informationLabel = new JLabel();
-    private final LogTextArea serverLog = new LogTextArea();
 
     public MainWindow(Server server) {
         this.server = server;
@@ -30,7 +35,7 @@ public class MainWindow extends JFrame {
         controlComponents.add(serverUpDownButton);
         controlComponents.add(addressField);
         this.setLayout(new BorderLayout());
-        this.add(new JScrollPane(serverLog), BorderLayout.CENTER);
+        this.add(new JScrollPane(SERVER_LOG_AREA), BorderLayout.CENTER);
         this.add(informationLabel, BorderLayout.NORTH);
         this.add(controlComponents, BorderLayout.SOUTH);
 
@@ -40,11 +45,14 @@ public class MainWindow extends JFrame {
         serverLogAreaInit();
     }
 
-    private void serverLogAreaInit() {
-        //ToDO
-//        serverLog.setEditable(false);
-//        serverLog.setText("Test info");
+    public static void addLog(String logText) {
+        SERVER_LOG_AREA.append(logText);
     }
+
+    private void serverLogAreaInit() {
+        SERVER_LOG_AREA.setEditable(false);
+    }
+
 
     private void informationLabelInit() {
         informationLabel.setFont(new Font(informationLabel.getName(), Font.PLAIN, 20));
@@ -54,44 +62,43 @@ public class MainWindow extends JFrame {
     private void serverUpDownButtonInit() {
         updateServerUpDownButtonText();
         serverUpDownButton.addActionListener(e -> {
+            logger.debug("[Window] Server button clicked");
+            logger.debug("[Window] isServerOn = " + isServerOn);
             isServerOn = !isServerOn;
+            if (isServerOn)
+                upServer();
+            else
+                downServer();
             updateServerUpDownButtonText();
             updateServerStatusLabel();
-            if (isServerOn) upServer();
-            else downServer();
-
         });
     }
 
     private void downServer() {
-        System.out.println("Down server");
+        logger.debug("[Window] DownServer method");
         try {
             server.closeServer();
-//            server.interrupt();
-//            serverThread.interrupt();
+            logger.info("[Server] Server is down");
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("[Server] Error at server stop ", e);
         }
-
-//            serverThread = null;
     }
 
     private void upServer() {
-        System.out.println("Up Server");
+        logger.debug("[Window] UpServer method");
         try {
             server.upServer(serverPort);
-//            server.join();
-//            server.start();
-        } catch (IOException ioException) {
-            //ToDo
-            ioException.printStackTrace();
+            logger.info("[Server] Server is up");
+        } catch (IOException e) {
+            logger.error("[Server] Error at server starting ", e);
         }
     }
 
     private void updateServerStatusLabel() {
+        logger.debug("[Window] Updating a status label");
         if (isServerOn) {
             informationLabel.setForeground(new Color(3, 144, 21));
-            informationLabel.setText("The server runs on port " + serverPort);
+            informationLabel.setText("The server runs on port " + server.getPort());
         } else {
             informationLabel.setForeground(Color.RED);
             informationLabel.setText("Server down");
@@ -99,18 +106,30 @@ public class MainWindow extends JFrame {
     }
 
     private void updateServerUpDownButtonText() {
+        logger.debug("[Window] Updating a button text");
         if (isServerOn)
             serverUpDownButton.setText("Close server");
         else
             serverUpDownButton.setText("Start server");
     }
 
-
     private void addressFieldInit() {
         addressField.setText(String.valueOf(serverPort));
+        addressField.addActionListener(e -> {
+            setPort();
+        });
+
+    }
+
+    private void setPort() {
         try {
-            serverPort = Integer.parseInt(addressField.getText());
-            addressField.setBackground(Color.white);
+            int temp = Integer.parseInt(addressField.getText());
+            if (temp >= 0 && temp < 65535) {
+                addressField.setBackground(Color.white);
+                serverPort = temp;
+            } else {
+                addressField.setBackground(Color.red);
+            }
         } catch (NumberFormatException e) {
             addressField.setBackground(Color.red);
         }

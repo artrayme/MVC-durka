@@ -3,6 +3,7 @@ package model.implementation;
 import model.abstractmodel.AbstractPatientDataStruct;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class DataStruct extends AbstractPatientDataStruct {
     private final PatientName patientName;
@@ -32,6 +33,32 @@ public class DataStruct extends AbstractPatientDataStruct {
         this.addressOfRegistration = new AddressOfRegistration(addressOfRegistration);
         this.birthDate = new BirthDate(birthDate);
         this.acceptanceDate = new AcceptanceDate(acceptanceDate);
+        this.doctorName = new DoctorName(doctorName);
+        this.doctorSecondName = new DoctorSecondName(doctorSecondName);
+        this.doctorFatherName = new DoctorFatherName(doctorFatherName);
+        this.conclusion = new Conclusion(conclusion);
+    }
+
+    public DataStruct(String patientName,
+                      String patientSecondName,
+                      String patientFatherName,
+                      String addressOfRegistration,
+                      String birthDate,
+                      String acceptanceDate,
+                      String doctorName,
+                      String doctorSecondName,
+                      String doctorFatherName,
+                      String conclusion) {
+        this.patientName = new PatientName(patientName);
+        this.patientSecondName = new PatientSecondName(patientSecondName);
+        this.patientFatherName = new PatientFatherName(patientFatherName);
+        this.addressOfRegistration = new AddressOfRegistration(addressOfRegistration);
+        Calendar birth = new GregorianCalendar();
+        birth.setTimeInMillis(Long.parseLong(birthDate));
+        this.birthDate = new BirthDate(birth);
+        Calendar acceptance = new GregorianCalendar();
+        acceptance.setTimeInMillis(Long.parseLong(acceptanceDate));
+        this.acceptanceDate = new AcceptanceDate(acceptance);
         this.doctorName = new DoctorName(doctorName);
         this.doctorSecondName = new DoctorSecondName(doctorSecondName);
         this.doctorFatherName = new DoctorFatherName(doctorFatherName);

@@ -6,7 +6,7 @@ import model.abstractmodel.DatabaseChangeListener;
 import model.implementation.ServerDatabase;
 import view.HospitalTable;
 
-import java.util.GregorianCalendar;
+import java.io.IOException;
 
 public class HospitalTablePaneController extends AbstractHospitalTableController {
 
@@ -61,16 +61,18 @@ public class HospitalTablePaneController extends AbstractHospitalTableController
     }
 
     @Override
-    public String[][] getDatabase() {
+    public String[][] getDatabase() throws IOException, ClassNotFoundException {
         String[][] result = new String[rowsAtPage][HospitalTable.COLUMN_NAMES.length];
         var modelPart = model.getDatabasePart(pageNumber * rowsAtPage, rowsAtPage);
         for (int i = 0; i < modelPart.length && modelPart[i] != null; i++) {
-            result[i][0] = modelPart[i].getPatientName() + " " + modelPart[i].getPatientSecondName() + " " + modelPart[i].getPatientFatherName();
-            result[i][1] = (String) modelPart[i].getPatientAddressOfRegistration();
-            result[i][2] = ((GregorianCalendar) modelPart[i].getPatientBirthDate()).getTime().toString();
-            result[i][3] = ((GregorianCalendar) modelPart[i].getPatientAcceptanceDate()).getTime().toString();
-            result[i][4] = modelPart[i].getDoctorName() + " " + modelPart[i].getDoctorSecondName() + " " + modelPart[i].getDoctorFatherName();
-            result[i][5] = (String) modelPart[i].getConclusion();
+            if (!modelPart[i][0].equals("null")) {
+                result[i][0] = modelPart[i][0] + " " + modelPart[i][1] + " " + modelPart[i][2];
+                result[i][1] = modelPart[i][3];
+                result[i][2] = modelPart[i][4];
+                result[i][3] = modelPart[i][5];
+                result[i][4] = modelPart[i][6] + " " + modelPart[i][7] + " " + modelPart[i][8];
+                result[i][5] = modelPart[i][9];
+            }
         }
         return result;
     }
@@ -87,7 +89,7 @@ public class HospitalTablePaneController extends AbstractHospitalTableController
 
     @Override
     public void addModelActionListener(DatabaseChangeListener listener) {
-        model.addListener(listener);
+
     }
 
 }

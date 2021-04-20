@@ -3,6 +3,8 @@ package controller.abstractcontroller;
 import model.abstractmodel.AbstractPatientDatabaseModel;
 import model.abstractmodel.DatabaseChangeListener;
 
+import java.io.IOException;
+
 public abstract class AbstractHospitalTableController {
 
     protected AbstractPatientDatabaseModel model;
@@ -58,11 +60,12 @@ public abstract class AbstractHospitalTableController {
         isDatabaseConnect = model != null;
     }
 
-    public abstract String[][] getDatabase();
+    public abstract String[][] getDatabase() throws IOException, ClassNotFoundException;
 
     public abstract boolean loadDatabaseFromFile(String filename);
 
     public abstract boolean saveDatabaseToFile(String filename);
 
     public abstract void addModelActionListener(DatabaseChangeListener listener);
+
 }

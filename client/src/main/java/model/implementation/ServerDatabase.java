@@ -1,190 +1,69 @@
 package model.implementation;
 
-import model.abstractmodel.AbstractPatientDataStruct;
 import model.abstractmodel.AbstractPatientDatabaseModel;
-import model.abstractmodel.DatabaseChangeListener;
 
-import java.net.ServerSocket;
-import java.util.ArrayList;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.util.Calendar;
-import java.util.Iterator;
-import java.util.function.Consumer;
+import java.util.Scanner;
 
 public class ServerDatabase implements AbstractPatientDatabaseModel {
-    private ServerSocket serverSocket;
-    private ArrayList<AbstractPatientDataStruct> database;
-
-    public ServerDatabase() {
-        //do nothing
+    enum ServerCommands {
+        GET_DATABASE_SIZE,
+        SET_DATABASE_NAME,
+        GET_DATABASE_NAME,
+        GET_DATABASE_PART,
+        SEARCH,
+        REMOVE,
+        NOT_A_COMMAND
     }
+    private final Socket socket = new Socket();
+    Scanner input;
+    PrintWriter output;
 
-    public ServerDatabase(int size) {
-        database.ensureCapacity(size);
-    }
-
-    @Override
-    public Iterator<AbstractPatientDataStruct> iterator() {
-        return database.iterator();
-    }
-
-    @Override
-    public void forEach(Consumer<? super AbstractPatientDataStruct> action) {
-        database.forEach(action);
-    }
-
-    @Override
-    public AbstractPatientDatabaseModel searchPatientName(String name) {
-        ServerDatabase result = new ServerDatabase();
-        database.forEach(e -> {
-            if (e.getPatientName().equals(name))
-                result.add(e);
-        });
-        return result;
-    }
-
-    @Override
-    public AbstractPatientDatabaseModel searchPatientSecondName(String name) {
-        ServerDatabase result = new ServerDatabase();
-        database.forEach(e -> {
-            if (e.getPatientSecondName().equals(name))
-                result.add(e);
-        });
-        return result;
-    }
-
-    @Override
-    public AbstractPatientDatabaseModel searchPatientFatherName(String name) {
-        ServerDatabase result = new ServerDatabase();
-        database.forEach(e -> {
-            if (e.getPatientFatherName().equals(name))
-                result.add(e);
-        });
-        return result;
-    }
-
-    @Override
-    public AbstractPatientDatabaseModel searchAddressOfRegistration(String address) {
-        ServerDatabase result = new ServerDatabase();
-        database.forEach(e -> {
-            if (e.getPatientAddressOfRegistration().equals(address)) {
-                result.add(e);
-            }
-        });
-        return result;
-    }
-
-    @Override
-    public AbstractPatientDatabaseModel searchBirthDate(Calendar date) {
-        ServerDatabase result = new ServerDatabase();
-        database.forEach(e -> {
-            if (compareDates((Calendar) e.getPatientBirthDate(), date)) {
-                result.add(e);
-            }
-        });
-        return result;
-    }
-
-    @Override
-    public AbstractPatientDatabaseModel searchAcceptanceDate(Calendar date) {
-        ServerDatabase result = new ServerDatabase();
-        database.forEach(e -> {
-            if (compareDates((Calendar) e.getPatientAcceptanceDate(), date)) {
-                result.add(e);
-            }
-        });
-        return result;
-    }
-
-    @Override
-    public AbstractPatientDatabaseModel searchDoctorName(String name) {
-        ServerDatabase result = new ServerDatabase();
-        database.forEach(e -> {
-            if (e.getDoctorName().equals(name)) {
-                result.add(e);
-            }
-        });
-        return result;
-    }
-
-    @Override
-    public AbstractPatientDatabaseModel searchDoctorSecondName(String name) {
-        ServerDatabase result = new ServerDatabase();
-        database.forEach(e -> {
-            if (e.getDoctorSecondName().equals(name)) {
-                result.add(e);
-            }
-        });
-        return result;
-    }
-
-    @Override
-    public AbstractPatientDatabaseModel searchDoctorFatherName(String name) {
-        ServerDatabase result = new ServerDatabase();
-        database.forEach(e -> {
-            if (e.getDoctorFatherName().equals(name)) {
-                result.add(e);
-            }
-        });
-        return result;
-    }
-
-    @Override
-    public AbstractPatientDatabaseModel searchConclusion(String conclusion) {
-        ServerDatabase result = new ServerDatabase();
-        database.forEach(e -> {
-            if (e.getConclusion().equals(conclusion)) {
-                result.add(e);
-            }
-        });
-        return result;
-    }
-
-    @Override
-    public AbstractPatientDataStruct[] getDatabasePart(int start, int count) {
-        AbstractPatientDataStruct[] result = new AbstractPatientDataStruct[count];
-        for (int i = 0; i + start < database.size() && i < count; i++) {
-            result[i] = database.get(i + start);
-        }
-        return result;
+    public ServerDatabase(String localhost, int port) throws IOException {
+        socket.connect(new InetSocketAddress(localhost, port), 1000);
+        input = new Scanner(socket.getInputStream());
+        output = new PrintWriter(socket.getOutputStream(), true);
+        output.println(ServerCommands.NOT_A_COMMAND);
+        input.nextLine();
     }
 
     @Override
     public int getDatabaseSize() {
+        output.println(ServerCommands.GET_DATABASE_SIZE);
+        int result = input.nextInt();
+        if (input.hasNextLine()){ input.nextLine(); }
+        return result;
+    }
+
+    @Override
+    public void add(String[] element) {
+
+    }
+
+    @Override
+    public int remove(String[] element) {
         return 0;
     }
 
     @Override
-    public void add(AbstractPatientDataStruct element) {
-        database.add(element);
-//        for (DatabaseChangeListener listener : listeners) {
-//            listener.onContentChange(this);
-//        }
-    }
-
-    @Override
-    public void remove(AbstractPatientDataStruct element) {
-        database.remove(element);
-//        for (DatabaseChangeListener listener : listeners) {
-//            listener.onContentChange(this);
-//        }
-    }
-
-    @Override
     public void remove(int index) {
-        database.remove(index);
-//        for (DatabaseChangeListener listener : listeners) {
-//            listener.onContentChange(this);
-//        }
     }
 
     @Override
-    public AbstractPatientDataStruct get(int index) {
-        return database.get(index);
+    public String[] get(int index) {
+//        return socket.getInputStream();
+        return null;
     }
 
     @Override
     public void setName(String name) {
-
+        output.println(ServerCommands.SET_DATABASE_NAME+" SomeDatabaseName");
     }
 
     @Override
@@ -193,19 +72,22 @@ public class ServerDatabase implements AbstractPatientDatabaseModel {
     }
 
     @Override
-    public void addListener(DatabaseChangeListener listener) {
-
+    public AbstractPatientDatabaseModel search(String[] params) throws IOException {
+        return null;
     }
 
     @Override
-    public void removeListener(DatabaseChangeListener listener) {
+    public String[][] getDatabasePart(int start, int count) {
+        output.println(ServerCommands.GET_DATABASE_PART + " " + start + " " + count);
+        String[][] result = new String[count][10];
 
-    }
+        for (int i = 0; i < count; i++) {
+            for (int j = 0; j < 10; j++) {
+                result[i][j] = input.nextLine();
+            }
+        }
 
-    private boolean compareDates(Calendar date1, Calendar date2) {
-        return date1.get(Calendar.YEAR) == date2.get(Calendar.YEAR)
-                && date1.get(Calendar.MONTH) == date2.get(Calendar.MONTH)
-                && date1.get(Calendar.DAY_OF_MONTH) == date2.get(Calendar.DAY_OF_MONTH);
+        return result;
     }
 
     public boolean saveDatabaseToTheFile(String filename) {
@@ -217,5 +99,10 @@ public class ServerDatabase implements AbstractPatientDatabaseModel {
     public boolean loadDatabaseFromTheFile(String filename) {
         throw new UnsupportedOperationException();
 //        return false;
+    }
+
+    public void setServerAddress(String ip, int port) throws IOException {
+        socket.close();
+        socket.connect(new InetSocketAddress(ip, port), 1000);
     }
 }

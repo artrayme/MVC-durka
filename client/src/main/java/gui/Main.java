@@ -4,10 +4,16 @@ import javax.swing.*;
 import javax.swing.plaf.FontUIResource;
 import java.awt.*;
 import java.util.Enumeration;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Main {
 
+    private static final Logger logger = LogManager.getLogger(Main.class);
+
+
     public static void main(String[] args) {
+        logger.fatal("Hello");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width = (int) (screenSize.getWidth() * 0.8);
         int height = (int) (screenSize.getHeight() * 0.8);
