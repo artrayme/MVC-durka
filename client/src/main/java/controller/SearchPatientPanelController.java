@@ -1,6 +1,7 @@
 package controller;
 
 import model.abstractmodel.AbstractPatientDatabaseModel;
+import model.implementation.BufferDatabase;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -27,11 +28,11 @@ public class SearchPatientPanelController {
 
         if (model != null) {
             params = new String[]{patientName, patientSecondName, patientFatherName,
-                    addressOfRegistration,  String.valueOf(birthDate.getTimeInMillis()), String.valueOf(acceptanceDate.getTimeInMillis()),
+                    addressOfRegistration,  birthDate!=null?String.valueOf(birthDate.getTimeInMillis()):"null",
+                    acceptanceDate!=null?String.valueOf(acceptanceDate.getTimeInMillis()):"null",
                     doctorName, doctorSecondName, doctorFatherName,
                     conclusion};
-            AbstractPatientDatabaseModel result = model;
-            result = result.search(params);
+            AbstractPatientDatabaseModel result = new BufferDatabase(model, params);
             return result;
         } else
             return null;

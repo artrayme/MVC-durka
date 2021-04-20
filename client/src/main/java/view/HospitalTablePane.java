@@ -2,7 +2,10 @@ package view;
 
 import controller.abstractcontroller.AbstractHospitalTableController;
 import controller.implementation.HospitalTablePaneController;
+import gui.Main;
 import model.abstractmodel.AbstractPatientDatabaseModel;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -12,6 +15,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class HospitalTablePane extends JPanel {
+    private static final Logger logger = LogManager.getLogger(Main.class);
+
     private final AbstractHospitalTableController controller;
     private final Box buttonsLayout = Box.createHorizontalBox();
     private final JButton startPageButton = new JButton();
@@ -92,8 +97,8 @@ public class HospitalTablePane extends JPanel {
             Image img = ImageIO.read(getClass().getResource(path));
             dimg = img.getScaledInstance(32, 32, Image.SCALE_SMOOTH);
         } catch (IOException exception) {
+            logger.error("[HospitalTable] Error at images loading", exception);
             JOptionPane.showMessageDialog(new JFrame(), "Something wrong with buttons icons");
-            exception.printStackTrace();
         }
         assert dimg != null;
         return new ImageIcon(dimg);
@@ -146,6 +151,7 @@ public class HospitalTablePane extends JPanel {
         try {
             database = controller.getDatabase();
         } catch (IOException | ClassNotFoundException e) {
+            logger.error("[HospitalTable] Error while database updating", e);
             e.printStackTrace();
         }
         for (int i = 0; i < database.length; i++) {
@@ -173,6 +179,7 @@ public class HospitalTablePane extends JPanel {
             result = Integer.parseInt(rowsCountAtThePageTextField.getText());
             rowsCountAtThePageTextField.setBackground(Color.white);
         } catch (NumberFormatException e) {
+            logger.info("[HospitalTable] Can't parse Integer", e);
             rowsCountAtThePageTextField.setBackground(Color.red);
         }
         if (controller.onRowsCountAtThePageTextField(result)) {

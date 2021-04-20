@@ -3,15 +3,14 @@ package model.implementation;
 import model.abstractmodel.AbstractPatientDatabaseModel;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.util.Calendar;
 import java.util.Scanner;
 
 public class ServerDatabase implements AbstractPatientDatabaseModel {
+
+
     enum ServerCommands {
         GET_DATABASE_SIZE,
         SET_DATABASE_NAME,
@@ -19,9 +18,13 @@ public class ServerDatabase implements AbstractPatientDatabaseModel {
         GET_DATABASE_PART,
         ADD,
         SEARCH,
+        SEARCHED_SIZE,
         REMOVE,
-        NOT_A_COMMAND
+        SAVE_TO_FILE,
+        LOAD_FROM_FILE,
+        NOT_A_COMMAND,
     }
+
     private final Socket socket = new Socket();
     Scanner input;
     PrintWriter output;
@@ -38,7 +41,9 @@ public class ServerDatabase implements AbstractPatientDatabaseModel {
     public int getDatabaseSize() {
         output.println(ServerCommands.GET_DATABASE_SIZE);
         int result = input.nextInt();
-        if (input.hasNextLine()){ input.nextLine(); }
+        if (input.hasNextLine()) {
+            input.nextLine();
+        }
         return result;
     }
 
@@ -57,40 +62,55 @@ public class ServerDatabase implements AbstractPatientDatabaseModel {
             output.println(params[i]);
         }
         int result = input.nextInt();
-        if (input.hasNextLine()){ input.nextLine(); }
+        if (input.hasNextLine()) {
+            input.nextLine();
+        }
         return result;
     }
 
     @Override
     public void remove(int index) {
+        throw new UnsupportedOperationException();
+    }
 
+    public int sizeOfSearched(String[] paterns){
+        output.println(ServerCommands.SEARCHED_SIZE);
+        for (int i = 0; i < paterns.length; i++) {
+            output.println(paterns[i]);
+        }
+
+        int result = input.nextInt();
+        if (input.hasNextLine()) {
+            input.nextLine();
+        }
+        return result;
     }
 
     @Override
     public void setName(String name) {
-        output.println(ServerCommands.SET_DATABASE_NAME+" SomeDatabaseName");
+        output.println(ServerCommands.SET_DATABASE_NAME + " SomeDatabaseName");
     }
 
     @Override
     public String getName() {
-        return null;
+        output.println(ServerCommands.GET_DATABASE_NAME);
+        return input.nextLine();
     }
 
     @Override
-    public AbstractPatientDatabaseModel search(String[] params) throws IOException {
+    public String[][] search(String[] params) throws IOException {
         output.println(ServerCommands.SEARCH);
         for (int i = 0; i < params.length; i++) {
             output.println(params[i]);
         }
-        ServerDatabase result = new ServerDatabase(socket.getLocalAddress().getHostAddress(), socket.getPort());
-        while (input.hasNextLine()) {
-            String[] temp = new String[10];
-            for (int i = 0; i < 10; i++) {
-                temp[i] = input.nextLine();
+        int size = Integer.parseInt(input.nextLine().trim());
+        String[][] result = new String[size][10];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < 10; j++) {
+                result[i][j] = input.nextLine();
             }
-            result.add(temp);
         }
-        return this;
+        return result;
     }
 
     @Override
@@ -108,14 +128,17 @@ public class ServerDatabase implements AbstractPatientDatabaseModel {
     }
 
     public boolean saveDatabaseToTheFile(String filename) {
-        //ToDo;
-        throw new UnsupportedOperationException();
-//        return false;
+        output.println(ServerCommands.SAVE_TO_FILE + " " + filename);
+        System.out.println("result = X" );
+        String result = input.nextLine();
+        System.out.println("result = " + result);
+        return result.equals("true");
     }
 
     public boolean loadDatabaseFromTheFile(String filename) {
-        throw new UnsupportedOperationException();
-//        return false;
+        output.println(ServerCommands.LOAD_FROM_FILE + " " + filename);
+        String result = input.nextLine();
+        return result.equals("true");
     }
 
     public void setServerAddress(String ip, int port) throws IOException {

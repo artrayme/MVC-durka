@@ -19,7 +19,7 @@ public interface AbstractPatientDatabaseModel {
 
     String getName();
 
-    AbstractPatientDatabaseModel search(String[] params) throws IOException;
+    String[][] search(String[] params) throws IOException;
 
 
     String[][] getDatabasePart(int start, int count) throws IOException, ClassNotFoundException;

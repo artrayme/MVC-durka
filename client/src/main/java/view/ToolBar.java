@@ -3,9 +3,12 @@ package view;
 import controller.AddPatientPanelController;
 import controller.RemovePatientPanelController;
 import controller.SearchPatientPanelController;
+import gui.Main;
 import gui.MainWindow;
 import model.abstractmodel.AbstractPatientDatabaseModel;
 import model.implementation.ServerDatabase;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import view.dialogs.addpatient.AddPatientDialog;
 import view.dialogs.removepatient.RemovePatientDialog;
 import view.dialogs.searchpatients.SearchPatientDialog;
@@ -16,6 +19,8 @@ import java.awt.*;
 import java.io.IOException;
 
 public class ToolBar extends JPanel {
+    private static final Logger logger = LogManager.getLogger(Main.class);
+
     private int serverPort;
 
     private final JButton newDatabaseButton = new JButton();
@@ -77,6 +82,7 @@ public class ToolBar extends JPanel {
                 serverPortField.setBackground(Color.red);
             }
         } catch (NumberFormatException e) {
+            logger.info("[ToolBar] Can't parse Integer", e);
             serverPortField.setBackground(Color.red);
         }
     }
@@ -87,7 +93,7 @@ public class ToolBar extends JPanel {
             Image resultImage = img.getScaledInstance(32, 32, Image.SCALE_SMOOTH);
             return new ImageIcon(resultImage);
         } catch (IOException exception) {
-            //ToDO
+            logger.info("[ToolBar] Error at images loading ", exception);
             JOptionPane.showMessageDialog(new JFrame(), "Something wrong at button image loading");
         }
         return new ImageIcon();
@@ -98,12 +104,9 @@ public class ToolBar extends JPanel {
         newDatabaseButton.setBackground(new Color(220, 220, 220));
         newDatabaseButton.addActionListener(actionEvent -> {
             try {
-                System.out.println(serverHostnameField.getText());
-                System.out.println(serverPort);
                 ((HospitalTablePane) (MainWindow.tabBar.getSelectedComponent())).setModel(new ServerDatabase(serverHostnameField.getText(), serverPort));
             } catch (IOException e) {
-                //ToDo handle
-                e.printStackTrace();
+                logger.error("[ToolBar] Error while connecting to server ", e);
             }
 
             lastClicked.setBackground(new Color(220, 220, 220));
@@ -122,6 +125,11 @@ public class ToolBar extends JPanel {
             if (temp.isDatabaseConnected()) {
                 newElementButton.setBackground(new Color(118, 246, 74));
                 createAddDialog(temp.getModel());
+                try {
+                    ((HospitalTablePane) (MainWindow.tabBar.getSelectedComponent())).setModel(new ServerDatabase(serverHostnameField.getText(), serverPort));
+                } catch (IOException e) {
+                    logger.error("[ToolBar] Error while connecting to server ", e);
+                }
             } else {
                 newElementButton.setBackground(new Color(246, 74, 74));
                 JOptionPane.showMessageDialog(new JFrame(), "Database not connected");
@@ -163,6 +171,11 @@ public class ToolBar extends JPanel {
             if (temp.isDatabaseConnected()) {
                 deleteElementButton.setBackground(new Color(118, 246, 74));
                 createDeleteDialog(temp.getModel());
+                try {
+                    ((HospitalTablePane) (MainWindow.tabBar.getSelectedComponent())).setModel(new ServerDatabase(serverHostnameField.getText(), serverPort));
+                } catch (IOException e) {
+                    logger.error("[ToolBar] Error while connecting to server ", e);
+                }
             } else {
                 deleteElementButton.setBackground(new Color(246, 74, 74));
                 JOptionPane.showMessageDialog(new JFrame(), "Database not connected");

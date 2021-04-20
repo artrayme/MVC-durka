@@ -65,7 +65,7 @@ public class HospitalTablePaneController extends AbstractHospitalTableController
         String[][] result = new String[rowsAtPage][HospitalTable.COLUMN_NAMES.length];
         var modelPart = model.getDatabasePart(pageNumber * rowsAtPage, rowsAtPage);
         for (int i = 0; i < modelPart.length && modelPart[i] != null; i++) {
-            if (!modelPart[i][0].equals("null")) {
+            if (modelPart[i][0]!=null && !modelPart[i][0].equals("null")) {
                 result[i][0] = modelPart[i][0] + " " + modelPart[i][1] + " " + modelPart[i][2];
                 result[i][1] = modelPart[i][3];
                 result[i][2] = modelPart[i][4];

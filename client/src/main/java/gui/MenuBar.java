@@ -19,6 +19,8 @@ public class MenuBar extends JMenuBar {
     private final JMenu editMenu = new JMenu("<html><font color='#d6d6d6'>Edit</font></html>");
     private final JMenu helpMenu = new JMenu("<html><font color='#d6d6d6'>Help</font></html>");
 
+    private final TextFieldDialog dialog = new TextFieldDialog();
+
     public MenuBar() {
         initFileMenu();
         initEditMenu();
@@ -54,15 +56,8 @@ public class MenuBar extends JMenuBar {
         JMenuItem save = new JMenuItem("<html><font color='#d6d6d6'>Save</font></html>");
         save.setBackground(Color.DARK_GRAY);
         save.addActionListener(actionEvent -> {
-//            JFileChooser fileChooser = new JFileChooser();
-//            fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-//            int result = fileChooser.showOpenDialog(this);
-//            if (result == JFileChooser.APPROVE_OPTION) {
-//                File selectedFile = fileChooser.getSelectedFile();
-//                ((HospitalTablePane) (MainWindow.tabBar.getSelectedComponent())).saveDatabaseToFile(selectedFile);
-//            }
-            throw new UnsupportedOperationException();
-
+            var temp = (HospitalTablePane) (MainWindow.tabBar.getSelectedComponent());
+            temp.saveDatabaseToFile(dialog.getText());
         });
         return save;
     }
@@ -71,15 +66,8 @@ public class MenuBar extends JMenuBar {
         JMenuItem load = new JMenuItem("<html><font color='#d6d6d6'>Load</font></html>");
         load.setBackground(Color.darkGray);
         load.addActionListener(actionEvent -> {
-//            JFileChooser fileChooser = new JFileChooser();
-//            fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-//            int result = fileChooser.showOpenDialog(this);
-//            if (result == JFileChooser.APPROVE_OPTION) {
-//                File selectedFile = fileChooser.getSelectedFile();
-//                ((HospitalTablePane) (MainWindow.tabBar.getSelectedComponent())).loadDatabaseFromFile(selectedFile);
-//            }
-            throw new UnsupportedOperationException();
-
+            var temp = (HospitalTablePane) (MainWindow.tabBar.getSelectedComponent());
+            temp.loadDatabaseFromFile(dialog.getText());
         });
         return load;
     }
@@ -106,16 +94,18 @@ public class MenuBar extends JMenuBar {
         JMenuItem newPatient = initNewPatientDialogItem();
         JMenuItem removePatient = initRemovePatientDialogItem();
         JMenuItem findPatient = initFindPatientItem();
+        JMenuItem setFilename = initSetFilenameItem();
         editMenu.add(newPatient);
         editMenu.add(removePatient);
         editMenu.add(findPatient);
+        editMenu.add(setFilename);
         this.add(editMenu);
     }
 
     private JMenuItem initNewPatientDialogItem() {
-        JMenuItem pencil = new JMenuItem("<html><font color='#d6d6d6'>New patient</font></html>");
-        pencil.setBackground(Color.DARK_GRAY);
-        pencil.addActionListener(actionEvent -> {
+        JMenuItem newPatient = new JMenuItem("<html><font color='#d6d6d6'>New patient</font></html>");
+        newPatient.setBackground(Color.DARK_GRAY);
+        newPatient.addActionListener(actionEvent -> {
             var temp = (HospitalTablePane) (MainWindow.tabBar.getSelectedComponent());
             if (temp.isDatabaseConnected()) {
                 createAddDialog(temp.getModel());
@@ -123,14 +113,14 @@ public class MenuBar extends JMenuBar {
                 JOptionPane.showMessageDialog(new JFrame(), "Database not connected");
             }
         });
-        return pencil;
+        return newPatient;
     }
 
 
     private JMenuItem initRemovePatientDialogItem() {
-        JMenuItem line = new JMenuItem("<html><font color='#d6d6d6'>Remove patient</font></html>");
-        line.setBackground(Color.DARK_GRAY);
-        line.addActionListener(actionEvent -> {
+        JMenuItem removePatient = new JMenuItem("<html><font color='#d6d6d6'>Remove patient</font></html>");
+        removePatient.setBackground(Color.DARK_GRAY);
+        removePatient.addActionListener(actionEvent -> {
             var temp = (HospitalTablePane) (MainWindow.tabBar.getSelectedComponent());
             if (temp.isDatabaseConnected()) {
                 createDeleteDialog(temp.getModel());
@@ -138,13 +128,13 @@ public class MenuBar extends JMenuBar {
                 JOptionPane.showMessageDialog(new JFrame(), "Database not connected");
             }
         });
-        return line;
+        return removePatient;
     }
 
     private JMenuItem initFindPatientItem() {
-        JMenuItem rectangle = new JMenuItem("<html><font color='#d6d6d6'>Find patient</font></html>");
-        rectangle.setBackground(Color.darkGray);
-        rectangle.addActionListener(actionEvent -> {
+        JMenuItem findPatient = new JMenuItem("<html><font color='#d6d6d6'>Find patient</font></html>");
+        findPatient.setBackground(Color.darkGray);
+        findPatient.addActionListener(actionEvent -> {
             var temp = (HospitalTablePane) (MainWindow.tabBar.getSelectedComponent());
             if (temp.isDatabaseConnected()) {
                 createSearchDialog(temp.getModel());
@@ -152,7 +142,16 @@ public class MenuBar extends JMenuBar {
                 JOptionPane.showMessageDialog(new JFrame(), "Database not connected");
             }
         });
-        return rectangle;
+        return findPatient;
+    }
+
+    private JMenuItem initSetFilenameItem() {
+        JMenuItem filename = new JMenuItem("<html><font color='#d6d6d6'>SetFilename</font></html>");
+        filename.setBackground(Color.darkGray);
+        filename.addActionListener(actionEvent -> {
+            dialog.setVisible(true);
+        });
+        return filename;
     }
 
     private void createAddDialog(AbstractPatientDatabaseModel model) {
