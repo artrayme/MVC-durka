@@ -17,6 +17,7 @@ public class ServerDatabase implements AbstractPatientDatabaseModel {
         SET_DATABASE_NAME,
         GET_DATABASE_NAME,
         GET_DATABASE_PART,
+        ADD,
         SEARCH,
         REMOVE,
         NOT_A_COMMAND
@@ -43,7 +44,11 @@ public class ServerDatabase implements AbstractPatientDatabaseModel {
 
     @Override
     public void add(String[] element) {
-
+        System.out.println("ADD");
+        output.println(ServerCommands.ADD);
+        for (int i = 0; i < element.length; i++) {
+            output.println(element[i]);
+        }
     }
 
     @Override
@@ -53,12 +58,6 @@ public class ServerDatabase implements AbstractPatientDatabaseModel {
 
     @Override
     public void remove(int index) {
-    }
-
-    @Override
-    public String[] get(int index) {
-//        return socket.getInputStream();
-        return null;
     }
 
     @Override

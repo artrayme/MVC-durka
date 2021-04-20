@@ -2,6 +2,7 @@ package servercontroller;
 
 import gui.MainWindow;
 import model.abstractmodel.AbstractPatientDatabaseModel;
+import model.implementation.DataStruct;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,6 +19,7 @@ public class ClientThread extends Thread {
         SET_DATABASE_NAME,
         GET_DATABASE_NAME,
         GET_DATABASE_PART,
+        ADD,
         SEARCH,
         REMOVE,
         NOT_A_COMMAND
@@ -72,6 +74,10 @@ public class ClientThread extends Thread {
         }
     }
 
+    private void addPatient() {
+        model.add(new DataStruct(in.nextLine(), in.nextLine(), in.nextLine(), in.nextLine(), in.nextLine(), in.nextLine(), in.nextLine(), in.nextLine(), in.nextLine(), in.nextLine()));
+    }
+
     private void commandChooser(String inputCommand) {
         String[] commandWithArguments = inputCommand.split(" ");
 
@@ -88,6 +94,7 @@ public class ClientThread extends Thread {
             }
             case GET_DATABASE_NAME -> out.println(model==null?"DATABASE_NOT_CONNECTED":model.getName());
             case GET_DATABASE_PART -> printDatabasePartToTheStream(commandWithArguments);
+            case ADD -> addPatient();
             case SEARCH -> {
             }
             case REMOVE -> {

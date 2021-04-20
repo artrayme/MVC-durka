@@ -15,8 +15,6 @@ public interface AbstractPatientDatabaseModel {
 
     void remove(int index);
 
-    String[] get(int index);
-
     void setName(String name);
 
     String getName();
