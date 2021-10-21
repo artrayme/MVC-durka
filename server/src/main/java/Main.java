@@ -9,6 +9,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class Main {
 
@@ -22,16 +23,12 @@ public class Main {
 
         MainWindow mainWindow;
         try {
-            mainWindow = new MainWindow(new Server(XmlLoader.load(new File("/home/artemy/терапия4.xml"))));
+            mainWindow = new MainWindow(new Server(XmlLoader.load(new File(Main.class.getResource("data_example.xml").toURI()))));
             mainWindow.setTitle("Durka-Server");
             mainWindow.setBounds((screenSize.width - width) / 2, (screenSize.height - height) / 2, width, height);
             mainWindow.setVisible(true);
-        } catch (IOException e) {
+        } catch (IOException | ParserConfigurationException | SAXException | URISyntaxException e) {
             logger.error("Error at creating a server", e);
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
         }
     }
 
